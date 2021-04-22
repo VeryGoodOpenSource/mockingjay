@@ -4,7 +4,6 @@ library mock_navigator;
 
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart' as mocktail;
-import 'package:mockito/mockito.dart' as mockito;
 
 /// A template fake route, useful for registering fallbacks when using the
 /// `mocktail` package.

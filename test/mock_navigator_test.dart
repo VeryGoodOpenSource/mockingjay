@@ -4,6 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mock_navigator/mock_navigator.dart';
 import 'package:mocktail/mocktail.dart';
 
+class MockNavigator extends Mock
+    with MockNavigatorDiagnosticsMixin
+    implements MockNavigatorBase {}
+
 extension on WidgetTester {
   Future<void> pumpTest(Widget widget) async {
     await pumpWidget(
@@ -19,14 +23,14 @@ extension on WidgetTester {
 
 void main() {
   group('MockNavigator', () {
-    late MockNavigator navigator;
+    late MockNavigatorBase navigator;
 
     setUpAll(() {
       registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
     });
 
     setUp(() {
-      navigator = MocktailNavigator();
+      navigator = MockNavigator();
     });
 
     testWidgets('mocks .push calls', (tester) async {
