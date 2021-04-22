@@ -11,7 +11,7 @@ import 'package:mockito/mockito.dart' as mockito;
 class FakeRoute<T> extends mocktail.Fake implements Route<T> {}
 
 /// {@template mock_navigator_provider}
-/// The widget that provides an instance of a [MockNavigator].
+/// The widget that provides an instance of a [MockNavigatorBase].
 /// {@endtemplate}
 class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
@@ -21,8 +21,8 @@ class MockNavigatorProvider extends Navigator {
     required this.navigator,
   }) : super(key: key);
 
-  /// The [MockNavigator] used to mock navigation calls.
-  final MockNavigator navigator;
+  /// The mock navigator used to mock navigation calls.
+  final MockNavigatorBase navigator;
 
   /// The [Widget] to render.
   final Widget child;
@@ -38,23 +38,22 @@ class MockNavigatorProvider extends Navigator {
   }
 }
 
-/// The navigator of which the behavior can be defined through using either the
-/// [MocktailNavigator] or [MockitoNavigator].a
-abstract class MockNavigator implements NavigatorState {}
+/// The navigator of which the behavior can be defined through mocking.
+///
+///
+/// ```dart
+/// import 'package:mockito/mockito.dart';
+/// // OR
+/// import 'package:mocktail/mocktail.dart';
+///
+/// class MockNavigator extends Mock
+///     with MockNavigatorDiagnosticsMixin
+///     implements MockNavigatorBase {}
+/// ```
+abstract class MockNavigatorBase implements NavigatorState {}
 
-/// The navigator of which the behavior can be defined through mocking using the
-/// `mocktail` package.
-class MocktailNavigator extends mocktail.Mock
-    with _DiagnosticStringMixin
-    implements MockNavigator {}
-
-/// The navigator of which the behavior can be defined through mocking using the
-/// `mockito` package.
-class MockitoNavigator extends mocktail.Mock
-    with _DiagnosticStringMixin
-    implements MockNavigator {}
-
-mixin _DiagnosticStringMixin on Object {
+/// A mixin necessary when implementing a [MockNavigatorBase].
+mixin MockNavigatorDiagnosticsMixin on Object {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return super.toString();
@@ -64,7 +63,7 @@ mixin _DiagnosticStringMixin on Object {
 class _MockNavigatorState extends NavigatorState {
   _MockNavigatorState({required this.navigator});
 
-  MockNavigator navigator;
+  MockNavigatorBase navigator;
   Widget? child;
 
   @override
