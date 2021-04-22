@@ -64,5 +64,8 @@ class _MockNavigatorState extends NavigatorState {
   Future<T?> push<T extends Object?>(Route<T> route) => navigator.push(route);
 
   @override
+  void pop<T extends Object?>([T? result]) {}
+
+  @override
   Widget build(BuildContext context) => child!;
 }
