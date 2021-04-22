@@ -3,11 +3,6 @@
 library mock_navigator;
 
 import 'package:flutter/material.dart';
-import 'package:mocktail/mocktail.dart' as mocktail;
-
-/// A template fake route, useful for registering fallbacks when using the
-/// `mocktail` package.
-class FakeRoute<T> extends mocktail.Fake implements Route<T> {}
 
 /// {@template mock_navigator_provider}
 /// The widget that provides an instance of a [MockNavigatorBase].
