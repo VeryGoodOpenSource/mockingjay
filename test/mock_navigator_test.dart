@@ -67,5 +67,7 @@ void main() {
 
       expect(pushCalled, equals(1));
     });
+
+    // TODO: Add 'mocks .pop calls' test
   });
 }
