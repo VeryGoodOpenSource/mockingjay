@@ -8,6 +8,8 @@ class MockNavigator extends Mock
     with MockNavigatorDiagnosticsMixin
     implements MockNavigatorBase {}
 
+class FakeRoute<T> extends Fake implements Route<T> {}
+
 extension on WidgetTester {
   Future<void> pumpTest(Widget widget) async {
     await pumpWidget(
