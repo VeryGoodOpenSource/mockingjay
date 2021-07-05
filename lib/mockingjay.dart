@@ -1,6 +1,6 @@
 /// An experimental package that attempts to make it easy to mock Flutter's
 /// navigator routes.
-library mock_navigator;
+library mockingjay;
 
 import 'package:flutter/material.dart';
 
@@ -58,6 +58,10 @@ mixin MockNavigatorDiagnosticsMixin on Object {
 
 /// Internal class that imitates a [NavigatorState] and maps all the real
 /// [NavigatorState] methods to the mock methods for use in testing.
+///
+/// Any public method of [NavigatorState] used for routing should be overridden
+/// and remapped to the internal [_navigator] before any `verify` or `when`
+/// calls can function.
 class _MockNavigatorState extends NavigatorState {
   _MockNavigatorState(this._navigator);
 
