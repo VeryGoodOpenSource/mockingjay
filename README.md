@@ -13,8 +13,6 @@ Developed with 💙 by [Very Good Ventures](https://verygood.ventures) 🦄
 
 This is an experimental package that makes it easy to mock, test and verify navigation calls in Flutter. It works in tandem with [`mocktail`][mocktail] and [`mockito`][mockito], allowing you to mock a navigator the same way you would any other object, making it easier to test navigation behavior independently from the UI it's supposed to render.
 
-**Note**: This package is heavily inspired by and has a dependency on [pedantic](https://github.com/dart-lang/pedantic).
-
 ## Usage
 
 To use the package in your tests, add it to your dev dependencies in your `pubspec.yaml`:
