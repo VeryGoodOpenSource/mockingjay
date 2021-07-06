@@ -21,7 +21,7 @@ To use the package in your tests, add it to your dev dependencies in your `pubsp
 
 ```yaml
 dev_dependencies:
-  mockingjay: ^0.0.1
+  mockingjay: ^0.1.0
 ```
 
 Then, in your tests, create a `MockNavigator` class like so:
@@ -38,7 +38,7 @@ class MockNavigator extends Mock
 
 Now you can create a new `MockNavigator` and pass it to a `MockNavigatorProvider`.
 
-Any widget looking up the nearest `Navigator.of(context)` from that point will now receive the `MockNavigator`, allowing you to mock (using `when`) and `verify` any navigation calls.
+Any widget looking up the nearest `Navigator.of(context)` from that point will now receive the `MockNavigator`, allowing you to mock (using `when`) and `verify` any navigation calls. Use the included matchers to more easily match specific route names and types.
 
 If you're using `mocktail`, it's important to also set a fake fallback `Route` and to mock any navigation calls you might use in your tests.
 
@@ -79,7 +79,9 @@ void main() {
         );
 
         await tester.tap(find.byType(MyButton));
-        verify(() => navigator.push(any())).called(1);
+        verify(
+          () => navigator.push(any(that: isRoute<void>(named: '/second_screen'))),
+        ).called(1);
       },
     );
   });

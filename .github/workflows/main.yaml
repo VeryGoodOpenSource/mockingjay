@@ -1,6 +1,6 @@
 name: mockingjay
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -21,6 +21,10 @@ jobs:
 
       - name: Run tests
         run: flutter test --no-pub --coverage --test-randomize-ordering-seed random
+
+      - name: Run example project tests
+        working-directory: example/
+        run: flutter test --no-pub --test-randomize-ordering-seed random
 
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
@@ -45,4 +49,4 @@ jobs:
           flutter pub global activate pana
 
       - name: Verify Pub Score
-        run: ../../tool/verify_pub_score.sh
+        run: ./tool/verify_pub_score.sh
