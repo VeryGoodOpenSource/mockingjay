@@ -7,19 +7,9 @@ import 'package:mocktail/mocktail.dart';
 
 import '../helpers.dart';
 
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
-
 void main() {
   group('PincodeScreen', () {
     late MockNavigator navigator;
-
-    setUpAll(() {
-      registerFallbackValue(FakeRoute<Object?>());
-    });
 
     setUp(() {
       navigator = MockNavigator();
