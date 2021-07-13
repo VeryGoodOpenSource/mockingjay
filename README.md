@@ -4,7 +4,7 @@
 
 Developed with 💙 by [Very Good Ventures](https://verygood.ventures) 🦄
 
-[![ci](https://github.com/jeroen-meijer/mockingjay/workflows/ci/badge.svg)](https://github.com/jeroen-meijer/mockingjay/actions)
+[![ci](https://github.com/VeryGoodOpenSource/mockingjay/workflows/mockingjay/badge.svg)](https://github.com/VeryGoodOpenSource/mockingjay/actions)
 [![pub package](https://img.shields.io/pub/v/mockingjay.svg)](https://pub.dartlang.org/packages/mockingjay)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![style: very good analysis][badge]][badge_link]
