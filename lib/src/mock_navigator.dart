@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mocktail/mocktail.dart';
+
+class _FakeRoute<T> extends Fake implements Route<T> {}
 
 /// {@template mock_navigator_provider}
-/// The widget that provides an instance of a [MockNavigatorBase].
+/// The widget that provides an instance of a [MockNavigator].
 /// {@endtemplate}
 class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
@@ -12,7 +15,7 @@ class MockNavigatorProvider extends Navigator {
   }) : super(key: key);
 
   /// The mock navigator used to mock navigation calls.
-  final MockNavigatorBase navigator;
+  final MockNavigator navigator;
 
   /// The [Widget] to render.
   final Widget child;
@@ -30,22 +33,20 @@ class MockNavigatorProvider extends Navigator {
   }
 }
 
-/// A navigator of which the behavior can be defined through mocking.
-///
-///
-/// ```dart
-/// import 'package:mocktail/mocktail.dart';
-/// // If you're using mockito, import that instead.
-/// // import 'package:mockito/mockito.dart';
-///
-/// class MockNavigator extends Mock
-///     with MockNavigatorDiagnosticsMixin
-///     implements MockNavigatorBase {}
-/// ```
-abstract class MockNavigatorBase implements NavigatorState {}
+/// {@template mock_navigator}
+/// A mock navigator which can be used to stub navigation for testing purposes.
+/// {@endtemplate}
+class MockNavigator extends Mock
+    with _MockNavigatorDiagnosticsMixin
+    implements NavigatorState {
+  /// {@macro mock_navigator}
+  MockNavigator() {
+    registerFallbackValue(_FakeRoute());
+  }
+}
 
-/// A mixin necessary when implementing a [MockNavigatorBase].
-mixin MockNavigatorDiagnosticsMixin on Object {
+/// A mixin necessary when implementing a [MockNavigator].
+mixin _MockNavigatorDiagnosticsMixin on Object {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return super.toString();
@@ -61,7 +62,8 @@ mixin MockNavigatorDiagnosticsMixin on Object {
 class _MockNavigatorState extends NavigatorState {
   _MockNavigatorState(this._navigator);
 
-  final MockNavigatorBase _navigator;
+  final MockNavigator _navigator;
+
   Widget? _child;
 
   @override

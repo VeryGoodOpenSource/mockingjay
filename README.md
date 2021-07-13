@@ -11,7 +11,7 @@ Developed with 💙 by [Very Good Ventures](https://verygood.ventures) 🦄
 
 ---
 
-This is an experimental package that makes it easy to mock, test and verify navigation calls in Flutter. It works in tandem with [`mocktail`][mocktail] and [`mockito`][mockito], allowing you to mock a navigator the same way you would any other object, making it easier to test navigation behavior independently from the UI it's supposed to render.
+A package that makes it easy to mock, test and verify navigation calls in Flutter. It works in tandem with [`mocktail`][mocktail], allowing you to mock a navigator the same way you would any other object, making it easier to test navigation behavior independently from the UI it's supposed to render.
 
 ## Usage
 
@@ -25,36 +25,20 @@ dev_dependencies:
 Then, in your tests, create a `MockNavigator` class like so:
 
 ```dart
-import 'package:mocktail/mocktail.dart';
-// If you're using mockito, import that instead.
-// import 'package:mockito/mockito.dart';
+import 'package:mockingjay/mockingjay.dart';
 
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
+final navigator = MockNavigator();
 ```
 
 Now you can create a new `MockNavigator` and pass it to a `MockNavigatorProvider`.
 
 Any widget looking up the nearest `Navigator.of(context)` from that point will now receive the `MockNavigator`, allowing you to mock (using `when`) and `verify` any navigation calls. Use the included matchers to more easily match specific route names and types.
 
-If you're using `mocktail`, it's important to also set a fake fallback `Route` and to mock any navigation calls you might use in your tests.
-
 **Note**: make sure the `MockNavigatorProvider` is constructed **below** the `MaterialApp`. Otherwise, any `Navigator.of(context)` call will return a real `NavigatorState` instead of the mock.
 
 ```dart
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
-
 void main() {
   late MockNavigator navigator;
-
-  setUpAll(() {
-    registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
-  });
 
   setUp(() {
     navigator = MockNavigator();
@@ -90,4 +74,3 @@ void main() {
 [badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [badge_link]: https://pub.dev/packages/mockingjay
 [mocktail]: https://pub.dev/packages/mocktail
-[mockito]: https://pub.dev/packages/mockito

@@ -7,12 +7,6 @@ import 'package:mocktail/mocktail.dart';
 
 import '../helpers.dart';
 
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
-
 void main() {
   group('HomeScreen', () {
     const showPincodeScreenTextButtonKey =
@@ -21,11 +15,6 @@ void main() {
         Key('homeScreen_showQuizDialog_textButton');
 
     late MockNavigator navigator;
-
-    setUpAll(() {
-      registerFallbackValue(FakeRoute<Object?>());
-      registerFallbackValue(FakeRoute<String>());
-    });
 
     setUp(() {
       navigator = MockNavigator();

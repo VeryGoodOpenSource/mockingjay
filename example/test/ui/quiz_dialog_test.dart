@@ -1,5 +1,4 @@
 import 'package:example/ui/ui.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockingjay/mockingjay.dart';
@@ -7,19 +6,9 @@ import 'package:mocktail/mocktail.dart';
 
 import '../helpers.dart';
 
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
-
 void main() {
   group('QuizDialog', () {
     late MockNavigator navigator;
-
-    setUpAll(() {
-      registerFallbackValue(FakeRoute<Object?>());
-    });
 
     setUp(() {
       navigator = MockNavigator();
