@@ -1,7 +1,7 @@
 name: example
 description: An example project showcasing the functionality of Mockingjay.
 version: 0.0.1
-homepage: https://github.com/jeroen-meijer/mockingjay
+homepage: https://github.com/VeryGoodOpenSource/mockingjay
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
