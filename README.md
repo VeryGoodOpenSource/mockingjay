@@ -36,36 +36,62 @@ Any widget looking up the nearest `Navigator.of(context)` from that point will n
 
 **Note**: make sure the `MockNavigatorProvider` is constructed **below** the `MaterialApp`. Otherwise, any `Navigator.of(context)` call will return a real `NavigatorState` instead of the mock.
 
+## Example
+
 ```dart
-void main() {
-  late MockNavigator navigator;
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockingjay/mockingjay.dart';
 
-  setUp(() {
-    navigator = MockNavigator();
-    when(() => navigator.push(any())).thenAnswer((_) async => null);
-  });
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
-  group('MyButton', () {
-    testWidgets(
-      'pushes a new screen when button is pressed',
-      (tester) async {
-        await tester.pumpWidget(
-          MaterialApp(
-            home: MockNavigatorProvider(
-              navigator: navigator,
-              child: Scaffold(
-                body: MyButton(),
-              ),
-            ),
-          ),
-        );
-
-        await tester.tap(find.byType(MyButton));
-        verify(
-          () => navigator.push(any(that: isRoute<void>(named: '/second_screen'))),
-        ).called(1);
-      },
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: TextButton(
+        onPressed: () => Navigator.of(context).push(MySettingsPage.route()),
+        child: const Text('Navigate'),
+      ),
     );
+  }
+}
+
+class MySettingsPage extends StatelessWidget {
+  const MySettingsPage({Key? key}) : super(key: key);
+
+  static Route route() {
+    return MaterialPageRoute(
+      builder: (_) => const MySettingsPage(),
+      settings: const RouteSettings(name: '/settings'),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
+}
+
+void main() {
+  testWidgets('pushes SettingsPage when TextButton is tapped', (tester) async {
+    final navigator = MockNavigator();
+    when(() => navigator.push(any())).thenAnswer((_) async {});
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MockNavigatorProvider(
+          navigator: navigator,
+          child: const MyHomePage(),
+        ),
+      ),
+    );
+
+    await tester.tap(find.byType(TextButton));
+
+    verify(
+      () => navigator.push(any(that: isRoute<void>(named: '/settings'))),
+    ).called(1);
   });
 }
 ```
