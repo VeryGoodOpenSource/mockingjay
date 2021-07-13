@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mock_navigator/mock_navigator.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
-
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
 
 extension on WidgetTester {
   Future<void> pumpTest({
-    required MockNavigatorBase navigator,
+    required MockNavigator navigator,
     required WidgetBuilder builder,
   }) async {
     await pumpWidget(
@@ -33,7 +27,7 @@ extension on WidgetTester {
 
 void main() {
   group('MockNavigator', () {
-    late MockNavigatorBase navigator;
+    late MockNavigator navigator;
 
     const testRouteName = '__test_route__';
     final testRoute = MaterialPageRoute<void>(
@@ -50,12 +44,15 @@ void main() {
       return testRoute;
     }
 
-    setUpAll(() {
-      registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
-    });
-
     setUp(() {
       navigator = MockNavigator();
+    });
+
+    test('toString returns normally', () {
+      expect(
+        () => navigator.toString(),
+        returnsNormally,
+      );
     });
 
     testWidgets('mocks .push calls', (tester) async {
@@ -172,6 +169,21 @@ void main() {
 
       await tester.tap(find.byType(TextButton));
       verify(() => navigator.popAndPushNamed(testRouteName)).called(1);
+    });
+
+    testWidgets('mocks .popUntil calls', (tester) async {
+      when(() => navigator.popUntil(any())).thenAnswer((_) async {});
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).popUntil(testRoutePredicate),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+      verify(() => navigator.popUntil(testRoutePredicate)).called(1);
     });
 
     testWidgets('mocks .pushAndRemoveUntil calls', (tester) async {

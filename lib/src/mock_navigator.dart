@@ -1,11 +1,10 @@
-/// An experimental package that attempts to make it easy to mock Flutter's
-/// navigator routes.
-library mock_navigator;
-
 import 'package:flutter/material.dart';
+import 'package:mocktail/mocktail.dart';
+
+class _FakeRoute<T> extends Fake implements Route<T> {}
 
 /// {@template mock_navigator_provider}
-/// The widget that provides an instance of a [MockNavigatorBase].
+/// The widget that provides an instance of a [MockNavigator].
 /// {@endtemplate}
 class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
@@ -16,7 +15,7 @@ class MockNavigatorProvider extends Navigator {
   }) : super(key: key);
 
   /// The mock navigator used to mock navigation calls.
-  final MockNavigatorBase navigator;
+  final MockNavigator navigator;
 
   /// The [Widget] to render.
   final Widget child;
@@ -34,22 +33,20 @@ class MockNavigatorProvider extends Navigator {
   }
 }
 
-/// The navigator of which the behavior can be defined through mocking.
-///
-///
-/// ```dart
-/// import 'package:mockito/mockito.dart';
-/// // OR
-/// import 'package:mocktail/mocktail.dart';
-///
-/// class MockNavigator extends Mock
-///     with MockNavigatorDiagnosticsMixin
-///     implements MockNavigatorBase {}
-/// ```
-abstract class MockNavigatorBase implements NavigatorState {}
+/// {@template mock_navigator}
+/// A mock navigator which can be used to stub navigation for testing purposes.
+/// {@endtemplate}
+class MockNavigator extends Mock
+    with _MockNavigatorDiagnosticsMixin
+    implements NavigatorState {
+  /// {@macro mock_navigator}
+  MockNavigator() {
+    registerFallbackValue(_FakeRoute());
+  }
+}
 
-/// A mixin necessary when implementing a [MockNavigatorBase].
-mixin MockNavigatorDiagnosticsMixin on Object {
+/// A mixin necessary when implementing a [MockNavigator].
+mixin _MockNavigatorDiagnosticsMixin on Object {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return super.toString();
@@ -58,10 +55,15 @@ mixin MockNavigatorDiagnosticsMixin on Object {
 
 /// Internal class that imitates a [NavigatorState] and maps all the real
 /// [NavigatorState] methods to the mock methods for use in testing.
+///
+/// Any public method of [NavigatorState] used for routing should be overridden
+/// and remapped to the internal [_navigator] before any `verify` or `when`
+/// calls can function.
 class _MockNavigatorState extends NavigatorState {
   _MockNavigatorState(this._navigator);
 
-  final MockNavigatorBase _navigator;
+  final MockNavigator _navigator;
+
   Widget? _child;
 
   @override

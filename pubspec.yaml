@@ -1,8 +1,8 @@
-name: mock_navigator
-description: An experimental package that attempts to make it easy to mock
-  Flutter's navigator routes.
-version: 0.0.1
-homepage: https://github.com/jeroen-meijer/mock_navigator
+name: mockingjay
+description: An experimental package that makes it easy to mock, test and verify
+  navigation calls in Flutter.
+version: 0.1.0
+homepage: https://github.com/jeroen-meijer/mockingjay
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -11,9 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  test: ^1.16.8
+  mocktail: ^0.1.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^0.1.4
-  very_good_analysis: 2.1.2
+  very_good_analysis: ^2.1.2

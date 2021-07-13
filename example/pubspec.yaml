@@ -1,0 +1,23 @@
+name: example
+description: An example project showcasing the functionality of Mockingjay.
+version: 0.0.1
+homepage: https://github.com/jeroen-meijer/mockingjay
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.1.4
+  very_good_analysis: 2.1.2
+  mockingjay:
+    path: ../
+
+flutter:
+  uses-material-design: true
