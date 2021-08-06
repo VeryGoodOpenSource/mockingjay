@@ -3,9 +3,14 @@ import 'dart:io';
 import 'package:example/ui/ui.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Future<void> _showPincodeScreen(BuildContext context) async {
     final result = await Navigator.of(context).push(PincodeScreen.route());
 
@@ -17,14 +22,16 @@ class HomeScreen extends StatelessWidget {
       snackBarContent = 'Pincode is "$result" 🔒';
     }
 
-    ScaffoldMessenger.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          content: Text(snackBarContent),
-        ),
-      );
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+        ..removeCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            content: Text(snackBarContent),
+          ),
+        );
+    }
   }
 
   Future<void> _showQuizDialog(BuildContext context) async {
@@ -40,14 +47,16 @@ class HomeScreen extends StatelessWidget {
       snackBarContent = 'Hamburger all the way! 🍔';
     }
 
-    ScaffoldMessenger.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          content: Text(snackBarContent),
-        ),
-      );
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+        ..removeCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            content: Text(snackBarContent),
+          ),
+        );
+    }
   }
 
   @override
@@ -64,17 +73,15 @@ class HomeScreen extends StatelessWidget {
           textAlign: TextAlign.center,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(32),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
                     'This is an example app showcasing the Mockingjay library.',
                     style: theme.textTheme.headline6,
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 8),
                   Text.rich(
                     TextSpan(
                       children: [
@@ -97,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     style: TextStyle(color: theme.disabledColor),
                   ),
-                  const SizedBox(height: 32.0),
+                  const SizedBox(height: 32),
                   TextButton.icon(
                     key: const Key('homeScreen_showPincodeScreen_textButton'),
                     onPressed: () => _showPincodeScreen(context),

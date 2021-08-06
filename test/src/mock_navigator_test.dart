@@ -142,7 +142,7 @@ void main() {
     });
 
     testWidgets('mocks .pop calls', (tester) async {
-      when(() => navigator.pop(any())).thenAnswer((_) async {});
+      when(() => navigator.pop(any<dynamic>())).thenAnswer((_) async {});
 
       await tester.pumpTest(
         navigator: navigator,

@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
 
+Future<void> expectToFail(
+  dynamic actual,
+  Matcher matcher, {
+  required String withMessage,
+}) async {
+  try {
+    await expectLater(actual, matcher);
+    fail('TestFailure expected but not thrown');
+  } on TestFailure catch (error) {
+    expect(error.message, contains(withMessage));
+  }
+}
+
 void main() {
   group('Matchers', () {
     group('isRoute', () {
@@ -14,19 +27,19 @@ void main() {
 
       group('without arguments', () {
         test('matches any route', () {
-          expect(createRoute(), isRoute());
-          expect(createRoute<String>(), isRoute());
-          expect(createRoute('/test'), isRoute());
-          expect(createRoute<String>('/test'), isRoute());
+          expect(createRoute<dynamic>(), isRoute<dynamic>());
+          expect(createRoute<String>(), isRoute<dynamic>());
+          expect(createRoute<dynamic>('/test'), isRoute<dynamic>());
+          expect(createRoute<String>('/test'), isRoute<dynamic>());
         });
 
         test('does not match anything that is not a route', () {
-          expectToFail(1, isRoute(), withMessage: 'is not a route');
-          expectToFail('a', isRoute(), withMessage: 'is not a route');
-          expectToFail(null, isRoute(), withMessage: 'is not a route');
+          expectToFail(1, isRoute<dynamic>(), withMessage: 'is not a route');
+          expectToFail('a', isRoute<dynamic>(), withMessage: 'is not a route');
+          expectToFail(null, isRoute<dynamic>(), withMessage: 'is not a route');
           expectToFail(
             const SizedBox(),
-            isRoute(),
+            isRoute<dynamic>(),
             withMessage: 'is not a route',
           );
         });
@@ -34,46 +47,52 @@ void main() {
 
       group('with name argument', () {
         test('matches any route with correct name', () {
-          expect(createRoute('/test'), isRoute(named: '/test'));
-          expect(createRoute<String>('/test'), isRoute(named: '/test'));
+          expect(
+            createRoute<dynamic>('/test'),
+            isRoute<dynamic>(named: '/test'),
+          );
+          expect(
+            createRoute<String>('/test'),
+            isRoute<dynamic>(named: '/test'),
+          );
         });
 
         test('does not match anything that is not a route with that name', () {
           expectToFail(
-            createRoute(),
-            isRoute(named: '/test'),
+            createRoute<dynamic>(),
+            isRoute<dynamic>(named: '/test'),
             withMessage:
                 'is a route with the wrong name (actually, no name at all)',
           );
           expectToFail(
             createRoute<String>(),
-            isRoute(named: '/test'),
+            isRoute<dynamic>(named: '/test'),
             withMessage:
                 'is a route with the wrong name (actually, no name at all)',
           );
           expectToFail(
-            createRoute('/other_name'),
-            isRoute(named: '/test'),
+            createRoute<dynamic>('/other_name'),
+            isRoute<dynamic>(named: '/test'),
             withMessage: 'is a route with the wrong name ("/other_name")',
           );
           expectToFail(
             1,
-            isRoute(named: '/test'),
+            isRoute<dynamic>(named: '/test'),
             withMessage: 'is not a route',
           );
           expectToFail(
             'a',
-            isRoute(named: '/test'),
+            isRoute<dynamic>(named: '/test'),
             withMessage: 'is not a route',
           );
           expectToFail(
             null,
-            isRoute(named: '/test'),
+            isRoute<dynamic>(named: '/test'),
             withMessage: 'is not a route',
           );
           expectToFail(
             const SizedBox(),
-            isRoute(named: '/test'),
+            isRoute<dynamic>(named: '/test'),
             withMessage: 'is not a route',
           );
         });
@@ -87,13 +106,13 @@ void main() {
 
         test('does not match anything that is not a route of that type', () {
           expectToFail(
-            createRoute(),
+            createRoute<dynamic>(),
             isRoute<String>(),
             withMessage:
                 'is a route of the wrong type (MaterialPageRoute<dynamic>)',
           );
           expectToFail(
-            createRoute('/test'),
+            createRoute<dynamic>('/test'),
             isRoute<String>(),
             withMessage:
                 'is a route of the wrong type (MaterialPageRoute<dynamic>)',
@@ -116,14 +135,14 @@ void main() {
 
         test('does not match anything that is not a route of that type', () {
           expectToFail(
-            createRoute(),
+            createRoute<dynamic>(),
             isRoute<String>(named: '/test'),
             withMessage:
                 'is a route of the wrong type (MaterialPageRoute<dynamic>) '
                 'and name (actually, no name at all)',
           );
           expectToFail(
-            createRoute('/test'),
+            createRoute<dynamic>('/test'),
             isRoute<String>(named: '/test'),
             withMessage:
                 'is a route of the wrong type (MaterialPageRoute<dynamic>)',
@@ -158,17 +177,4 @@ void main() {
       });
     });
   });
-}
-
-Future<void> expectToFail(
-  dynamic actual,
-  Matcher matcher, {
-  required String withMessage,
-}) async {
-  try {
-    await expectLater(actual, matcher);
-    fail('TestFailure expected but not thrown');
-  } on TestFailure catch (error) {
-    expect(error.message, contains(withMessage));
-  }
 }
