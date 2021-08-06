@@ -29,7 +29,7 @@ class MockNavigatorProvider extends Navigator {
 
   @override
   RouteFactory? get onGenerateRoute {
-    return (_) => MaterialPageRoute(builder: (_) => child);
+    return (_) => MaterialPageRoute<dynamic>(builder: (_) => child);
   }
 }
 
@@ -41,7 +41,7 @@ class MockNavigator extends Mock
     implements NavigatorState {
   /// {@macro mock_navigator}
   MockNavigator() {
-    registerFallbackValue(_FakeRoute());
+    registerFallbackValue(_FakeRoute<dynamic>());
   }
 }
 
@@ -64,10 +64,10 @@ class _MockNavigatorState extends NavigatorState {
 
   final MockNavigator _navigator;
 
-  Widget? _child;
+  late Widget _child;
 
   @override
-  Widget build(BuildContext context) => _child!;
+  Widget build(BuildContext context) => _child;
 
   @override
   Future<T?> push<T extends Object?>(Route<T> route) {

@@ -8,16 +8,20 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  bloc: ^7.0.0
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^7.1.0
 
 dev_dependencies:
+  bloc_test: ^8.1.0
   flutter_test:
     sdk: flutter
-  mocktail: ^0.1.4
-  very_good_analysis: 2.1.2
   mockingjay:
     path: ../
+  mocktail: ^0.1.4
+  very_good_analysis: ^2.3.0
 
 flutter:
   uses-material-design: true
