@@ -62,24 +62,21 @@ class _PincodeScreenState extends State<PincodeScreen> {
           textAlign: TextAlign.center,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(32),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
                 children: [
                   const Text('Enter a pincode to continue.'),
-                  const SizedBox(height: 32.0),
+                  const SizedBox(height: 32),
                   TextField(
                     autofocus: true,
                     minLines: 1,
-                    maxLines: 1,
                     maxLength: 6,
                     maxLengthEnforcement: MaxLengthEnforcement.enforced,
                     obscureText: true,
                     style: TextStyle(
                       fontFamily: monospaceFontFamily,
-                      fontSize: 48.0,
+                      fontSize: 48,
                     ),
                     decoration: InputDecoration(
                       errorText: _errorText,
