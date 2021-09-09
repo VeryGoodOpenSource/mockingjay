@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
 class MySettingsPage extends StatelessWidget {
   const MySettingsPage({Key? key}) : super(key: key);
 
-  static Route route() {
+  static Route<void> route() {
     return MaterialPageRoute(
       builder: (_) => const MySettingsPage(),
       settings: const RouteSettings(name: '/settings'),
