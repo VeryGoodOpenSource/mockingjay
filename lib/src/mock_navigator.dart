@@ -10,8 +10,8 @@ class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
   const MockNavigatorProvider({
     Key? key,
-    required this.child,
     required this.navigator,
+    required this.child,
   }) : super(key: key);
 
   /// The mock navigator used to mock navigation calls.
