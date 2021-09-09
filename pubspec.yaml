@@ -1,7 +1,7 @@
 name: mockingjay
 description: A package that makes it easy to mock, test and verify navigation
   calls in Flutter.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/VeryGoodOpenSource/mockingjay
 
 environment:
