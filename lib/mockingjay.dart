@@ -6,3 +6,4 @@ export 'package:mocktail/mocktail.dart';
 
 export 'src/matchers.dart';
 export 'src/mock_navigator.dart';
+export 'src/tester_extensions.dart';
