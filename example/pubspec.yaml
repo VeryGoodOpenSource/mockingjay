@@ -8,14 +8,15 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  bloc: ^7.0.0
+  bloc: ^7.2.1
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.1.0
+  flutter_bloc: ^7.3.0
+  universal_io: ^2.0.4
 
 dev_dependencies:
-  bloc_test: ^8.1.0
+  bloc_test: ^8.2.0
   flutter_test:
     sdk: flutter
   mockingjay:
