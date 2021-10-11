@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:mockingjay/src/private/matcher_extensions.dart';
+import 'package:mockingjay/src/matcher_extensions.dart';
 import 'package:test/test.dart';
 
 /// Returns a matcher that matches [Route]s.

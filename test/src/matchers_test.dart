@@ -15,7 +15,6 @@ Future<void> expectToFail(
     await expectLater(actual, matcher);
     didNotFail = true;
   } on TestFailure catch (error) {
-    if (didNotFail) {}
     const whichClause = '   Which: ';
     final whichClauseIndex = error.message!.indexOf(whichClause);
     final reasonIndex = whichClauseIndex + whichClause.length;

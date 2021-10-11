@@ -4,18 +4,15 @@ import 'package:matcher/matcher.dart';
 extension MatcherExtensions on Matcher {
   /// Returns the description of this matcher as a string.
   String describeAsString() {
-    Description description = StringDescription();
-    description = describe(description);
-    return description.toString();
+    return describe(StringDescription()).toString();
   }
 
   /// Returns the mismatch description of this matcher as a string.
   // ignore: avoid_positional_boolean_parameters
   String describeMismatchAsString(dynamic item, Map matchState, bool verbose) {
-    Description description = StringDescription();
-    description = describeMismatch(
+    final description = describeMismatch(
       item,
-      description,
+      StringDescription(),
       matchState,
       verbose,
     );
