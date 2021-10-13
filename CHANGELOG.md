@@ -2,6 +2,7 @@
 
 - feat: add `whereSettings`, `whereName`, `whereArguments`, `whereMaintainState` and `whereFullscreenDialog` matcher arguments to `isRoute` matcher
 - **DEPRECATE**: fix: `named` argument on `isRoute` deprecated in favor of `whereName`
+- feat: add mock call for `maybePop` (thanks [@korzonkiee](https://github.com/korzonkiee)!)
 
 # 0.1.1
 
