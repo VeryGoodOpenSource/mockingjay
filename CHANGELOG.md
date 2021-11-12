@@ -1,3 +1,7 @@
+# 0.2.0-dev.3
+
+- feat: add mock call for `canPop` (thanks [@allisonryan0002](https://github.com/allisonryan0002)!)
+
 # 0.2.0-dev.2
 
 - feat: add mock call for `maybePop` (thanks [@korzonkiee](https://github.com/korzonkiee)!)

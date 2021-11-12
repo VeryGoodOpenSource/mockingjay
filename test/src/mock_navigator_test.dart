@@ -186,6 +186,21 @@ void main() {
       verify(() => navigator.popUntil(testRoutePredicate)).called(1);
     });
 
+    testWidgets('mocks .canPop calls', (tester) async {
+      when(() => navigator.canPop()).thenReturn(true);
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).canPop(),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+      verify(() => navigator.canPop()).called(1);
+    });
+
     testWidgets('mocks .maybePop calls', (tester) async {
       when(() => navigator.maybePop(any<dynamic>()))
           .thenAnswer((_) async => true);
