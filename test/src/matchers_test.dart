@@ -163,8 +163,10 @@ void main() {
             expectToFail(
               createRoute<dynamic>(name: '/other_name'),
               isRoute(
-                  whereSettings:
-                      equalsSettingsOf(createRoute<dynamic>(name: '/test'))),
+                whereSettings: equalsSettingsOf(
+                  createRoute<dynamic>(name: '/test'),
+                ),
+              ),
               withMessage: '''
 is a route where `settings` has `name` with value '/other_name' which is different.
           Expected: /test

@@ -379,10 +379,12 @@ void main() {
     });
 
     testWidgets('mocks .restorableReplace calls', (tester) async {
-      when(() => navigator.restorableReplace(
-            oldRoute: any(named: 'oldRoute'),
-            newRouteBuilder: any(named: 'newRouteBuilder'),
-          )).thenReturn(testRouteName);
+      when(
+        () => navigator.restorableReplace(
+          oldRoute: any(named: 'oldRoute'),
+          newRouteBuilder: any(named: 'newRouteBuilder'),
+        ),
+      ).thenReturn(testRouteName);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -405,10 +407,12 @@ void main() {
     });
 
     testWidgets('mocks .restorableReplaceRouteBelow calls', (tester) async {
-      when(() => navigator.restorableReplaceRouteBelow(
-            anchorRoute: any(named: 'anchorRoute'),
-            newRouteBuilder: any(named: 'newRouteBuilder'),
-          )).thenReturn(testRouteName);
+      when(
+        () => navigator.restorableReplaceRouteBelow(
+          anchorRoute: any(named: 'anchorRoute'),
+          newRouteBuilder: any(named: 'newRouteBuilder'),
+        ),
+      ).thenReturn(testRouteName);
 
       await tester.pumpTest(
         navigator: navigator,

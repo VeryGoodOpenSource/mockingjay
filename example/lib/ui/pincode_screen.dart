@@ -16,7 +16,7 @@ class PincodeScreen extends StatefulWidget {
   }
 
   @override
-  _PincodeScreenState createState() => _PincodeScreenState();
+  State<PincodeScreen> createState() => _PincodeScreenState();
 }
 
 class _PincodeScreenState extends State<PincodeScreen> {

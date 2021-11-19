@@ -57,9 +57,11 @@ void main() {
       });
 
       testWidgets('displays snackbar with selected pincode', (tester) async {
-        when(() => navigator.push(
-              any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
-            )).thenAnswer((_) async => '123456');
+        when(
+          () => navigator.push(
+            any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
+          ),
+        ).thenAnswer((_) async => '123456');
 
         await tester.pumpTest(
           builder: (context) {
