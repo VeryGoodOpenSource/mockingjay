@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:universal_io/io.dart';
 
 class PincodeScreen extends StatefulWidget {
   const PincodeScreen({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class PincodeScreen extends StatefulWidget {
   }
 
   @override
-  _PincodeScreenState createState() => _PincodeScreenState();
+  State<PincodeScreen> createState() => _PincodeScreenState();
 }
 
 class _PincodeScreenState extends State<PincodeScreen> {

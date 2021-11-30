@@ -146,6 +146,16 @@ class _MockNavigatorState extends NavigatorState {
   }
 
   @override
+  bool canPop() {
+    return _navigator.canPop();
+  }
+
+  @override
+  Future<bool> maybePop<T extends Object?>([T? result]) {
+    return _navigator.maybePop<T>(result);
+  }
+
+  @override
   Future<T?> pushAndRemoveUntil<T extends Object?>(
     Route<T> newRoute,
     RoutePredicate predicate,

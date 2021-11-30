@@ -51,15 +51,17 @@ void main() {
 
         verify(
           () => navigator.push(
-            any(that: isRoute<String?>(named: '/pincode_screen')),
+            any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
           ),
         ).called(1);
       });
 
       testWidgets('displays snackbar with selected pincode', (tester) async {
-        when(() => navigator.push(
-              any(that: isRoute<String?>(named: '/pincode_screen')),
-            )).thenAnswer((_) async => '123456');
+        when(
+          () => navigator.push(
+            any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
+          ),
+        ).thenAnswer((_) async => '123456');
 
         await tester.pumpTest(
           builder: (context) {
@@ -82,9 +84,15 @@ void main() {
       testWidgets(
         'displays snackbar when no pincode was submitted',
         (tester) async {
-          when(() => navigator.push(
-                any(that: isRoute<String?>(named: '/pincode_screen')),
-              )).thenAnswer((_) async => null);
+          when(
+            () => navigator.push(
+              any(
+                that: isRoute<String?>(
+                  whereName: equals('/pincode_screen'),
+                ),
+              ),
+            ),
+          ).thenAnswer((_) async => null);
 
           await tester.pumpTest(
             builder: (context) {

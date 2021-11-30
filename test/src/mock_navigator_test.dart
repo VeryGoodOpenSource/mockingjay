@@ -186,6 +186,37 @@ void main() {
       verify(() => navigator.popUntil(testRoutePredicate)).called(1);
     });
 
+    testWidgets('mocks .canPop calls', (tester) async {
+      when(() => navigator.canPop()).thenReturn(true);
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).canPop(),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+      verify(() => navigator.canPop()).called(1);
+    });
+
+    testWidgets('mocks .maybePop calls', (tester) async {
+      when(() => navigator.maybePop(any<dynamic>()))
+          .thenAnswer((_) async => true);
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).maybePop(testRoutePredicate),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+      verify(() => navigator.maybePop(testRoutePredicate)).called(1);
+    });
+
     testWidgets('mocks .pushAndRemoveUntil calls', (tester) async {
       when(() => navigator.pushAndRemoveUntil(any(), any()))
           .thenAnswer((_) async {});
@@ -348,10 +379,12 @@ void main() {
     });
 
     testWidgets('mocks .restorableReplace calls', (tester) async {
-      when(() => navigator.restorableReplace(
-            oldRoute: any(named: 'oldRoute'),
-            newRouteBuilder: any(named: 'newRouteBuilder'),
-          )).thenReturn(testRouteName);
+      when(
+        () => navigator.restorableReplace(
+          oldRoute: any(named: 'oldRoute'),
+          newRouteBuilder: any(named: 'newRouteBuilder'),
+        ),
+      ).thenReturn(testRouteName);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -374,10 +407,12 @@ void main() {
     });
 
     testWidgets('mocks .restorableReplaceRouteBelow calls', (tester) async {
-      when(() => navigator.restorableReplaceRouteBelow(
-            anchorRoute: any(named: 'anchorRoute'),
-            newRouteBuilder: any(named: 'newRouteBuilder'),
-          )).thenReturn(testRouteName);
+      when(
+        () => navigator.restorableReplaceRouteBelow(
+          anchorRoute: any(named: 'anchorRoute'),
+          newRouteBuilder: any(named: 'newRouteBuilder'),
+        ),
+      ).thenReturn(testRouteName);
 
       await tester.pumpTest(
         navigator: navigator,

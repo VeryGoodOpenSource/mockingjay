@@ -90,7 +90,7 @@ void main() {
     await tester.tap(find.byType(TextButton));
 
     verify(
-      () => navigator.push(any(that: isRoute<void>(named: '/settings'))),
+      () => navigator.push(any(that: isRoute<void>(whereName: equals('/settings')))),
     ).called(1);
   });
 }
