@@ -19,7 +19,7 @@ To use the package in your tests, add it to your dev dependencies in your `pubsp
 
 ```yaml
 dev_dependencies:
-  mockingjay: ^0.1.0
+  mockingjay: ^0.2.0
 ```
 
 Then, in your tests, create a `MockNavigator` class like so:
