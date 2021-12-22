@@ -95,7 +95,6 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
-coverage_badge.svg
 .test_coverage.dart
 *.lcov
 nohup.out
