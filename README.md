@@ -1,13 +1,15 @@
 # 🕊 mockingjay
 
-[![Very Good Ventures](https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/assets/vgv_logo.png)](https://verygood.ventures)
+[![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
+[![Very Good Ventures][logo_black]][very_good_ventures_link_light]
 
-Developed with 💙 by [Very Good Ventures](https://verygood.ventures) 🦄
+Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
 
-[![ci](https://github.com/VeryGoodOpenSource/mockingjay/workflows/mockingjay/badge.svg)](https://github.com/VeryGoodOpenSource/mockingjay/actions)
-[![pub package](https://img.shields.io/pub/v/mockingjay.svg)](https://pub.dartlang.org/packages/mockingjay)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![style: very good analysis][badge]][badge_link]
+[![ci][ci_badge]][ci_link]
+[![coverage][coverage_badge]][ci_link]
+[![pub package][pub_badge]][pub_link]
+[![License: MIT][license_badge]][license_link]
+[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_badge_link]
 
 ---
 
@@ -96,7 +98,18 @@ void main() {
 }
 ```
 
-[very good analysis]: https://github.com/VeryGoodOpenSource/very_good_analysis
-[badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[badge_link]: https://pub.dev/packages/mockingjay
+[ci_badge]: https://github.com/VeryGoodOpenSource/mockingjay/workflows/mockingjay/badge.svg
+[ci_link]: https://github.com/VeryGoodOpenSource/mockingjay/actions
+[coverage_badge]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/coverage_badge.svg
+[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license_link]: https://opensource.org/licenses/MIT
+[logo_black]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/assets/vgv_logo_black.png#gh-light-mode-only
+[logo_white]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/assets/vgv_logo_white.png#gh-dark-mode-only
 [mocktail]: https://pub.dev/packages/mocktail
+[pub_badge]: https://img.shields.io/pub/v/mockingjay.svg
+[pub_link]: https://pub.dartlang.org/packages/mockingjay
+[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_badge_link]: https://pub.dev/packages/very_good_analysis
+[very_good_ventures_link]: https://verygood.ventures
+[very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
+[very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
