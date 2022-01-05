@@ -103,8 +103,8 @@ void main() {
 [coverage_badge]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
-[logo_black]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/assets/vgv_logo_black.png#gh-light-mode-only
-[logo_white]: https://raw.githubusercontent.com/VeryGoodOpenSource/mockingjay/main/assets/vgv_logo_white.png#gh-dark-mode-only
+[logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
+[logo_white]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_white.png#gh-dark-mode-only
 [mocktail]: https://pub.dev/packages/mocktail
 [pub_badge]: https://img.shields.io/pub/v/mockingjay.svg
 [pub_link]: https://pub.dartlang.org/packages/mockingjay
