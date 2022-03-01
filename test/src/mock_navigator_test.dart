@@ -55,7 +55,7 @@ void main() {
     });
 
     testWidgets('mocks .push calls', (tester) async {
-      when(() => navigator.push(any())).thenAnswer((_) async {});
+      when(() => navigator.push(any())).thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -70,7 +70,7 @@ void main() {
     });
 
     testWidgets('mocks .pushNamed calls', (tester) async {
-      when(() => navigator.pushNamed(any())).thenAnswer((_) async {});
+      when(() => navigator.pushNamed(any())).thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -86,7 +86,7 @@ void main() {
 
     testWidgets('mocks .pushNamedAndRemoveUntil calls', (tester) async {
       when(() => navigator.pushNamedAndRemoveUntil(any(), any()))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -109,7 +109,8 @@ void main() {
     });
 
     testWidgets('mocks .pushReplacement calls', (tester) async {
-      when(() => navigator.pushReplacement(any())).thenAnswer((_) async {});
+      when(() => navigator.pushReplacement(any()))
+          .thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -125,7 +126,7 @@ void main() {
 
     testWidgets('mocks .pushReplacementNamed calls', (tester) async {
       when(() => navigator.pushReplacementNamed(any()))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -156,7 +157,8 @@ void main() {
     });
 
     testWidgets('mocks .popAndPushNamed calls', (tester) async {
-      when(() => navigator.popAndPushNamed(any())).thenAnswer((_) async {});
+      when(() => navigator.popAndPushNamed(any()))
+          .thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -218,7 +220,7 @@ void main() {
 
     testWidgets('mocks .pushAndRemoveUntil calls', (tester) async {
       when(() => navigator.pushAndRemoveUntil(any(), any()))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async => null);
 
       await tester.pumpTest(
         navigator: navigator,
