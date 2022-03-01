@@ -55,7 +55,7 @@ void main() {
     });
 
     testWidgets('mocks .push calls', (tester) async {
-      when(() => navigator.push(any())).thenAnswer((_) async => null);
+      when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
       await tester.pumpTest(
         navigator: navigator,
@@ -109,8 +109,8 @@ void main() {
     });
 
     testWidgets('mocks .pushReplacement calls', (tester) async {
-      when(() => navigator.pushReplacement(any()))
-          .thenAnswer((_) async => null);
+      when(() => navigator.pushReplacement<void, Object?>(any()))
+          .thenAnswer((_) async {});
 
       await tester.pumpTest(
         navigator: navigator,
@@ -203,24 +203,39 @@ void main() {
     });
 
     testWidgets('mocks .maybePop calls', (tester) async {
-      when(() => navigator.maybePop(any<dynamic>()))
-          .thenAnswer((_) async => true);
+      when(() => navigator.maybePop()).thenAnswer((_) async => true);
 
       await tester.pumpTest(
         navigator: navigator,
         builder: (context) => TextButton(
-          onPressed: () => Navigator.of(context).maybePop(testRoutePredicate),
+          onPressed: () => Navigator.of(context).maybePop(),
           child: const Text('Trigger'),
         ),
       );
 
       await tester.tap(find.byType(TextButton));
-      verify(() => navigator.maybePop(testRoutePredicate)).called(1);
+      verify(() => navigator.maybePop()).called(1);
+    });
+
+    testWidgets('mocks .maybePop calls w/result', (tester) async {
+      when(() => navigator.maybePop<bool>(any<bool>()))
+          .thenAnswer((_) async => true);
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).maybePop(true),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+      verify(() => navigator.maybePop<bool>(true)).called(1);
     });
 
     testWidgets('mocks .pushAndRemoveUntil calls', (tester) async {
-      when(() => navigator.pushAndRemoveUntil(any(), any()))
-          .thenAnswer((_) async => null);
+      when(() => navigator.pushAndRemoveUntil<void>(any(), any()))
+          .thenAnswer((_) async {});
 
       await tester.pumpTest(
         navigator: navigator,
@@ -259,7 +274,8 @@ void main() {
     });
 
     testWidgets('mocks .restorablePush calls', (tester) async {
-      when(() => navigator.restorablePush(any())).thenReturn(testRouteName);
+      when(() => navigator.restorablePush<void>(any()))
+          .thenReturn(testRouteName);
 
       await tester.pumpTest(
         navigator: navigator,
@@ -276,7 +292,7 @@ void main() {
     });
 
     testWidgets('mocks .restorablePushAndRemoveUntil calls', (tester) async {
-      when(() => navigator.restorablePushAndRemoveUntil(any(), any()))
+      when(() => navigator.restorablePushAndRemoveUntil<void>(any(), any()))
           .thenReturn(testRouteName);
 
       await tester.pumpTest(
@@ -343,7 +359,7 @@ void main() {
     });
 
     testWidgets('mocks .restorablePushReplacement calls', (tester) async {
-      when(() => navigator.restorablePushReplacement(any()))
+      when(() => navigator.restorablePushReplacement<void, Object?>(any()))
           .thenReturn(testRouteName);
 
       await tester.pumpTest(
@@ -381,7 +397,7 @@ void main() {
 
     testWidgets('mocks .restorableReplace calls', (tester) async {
       when(
-        () => navigator.restorableReplace(
+        () => navigator.restorableReplace<void>(
           oldRoute: any(named: 'oldRoute'),
           newRouteBuilder: any(named: 'newRouteBuilder'),
         ),
@@ -409,7 +425,7 @@ void main() {
 
     testWidgets('mocks .restorableReplaceRouteBelow calls', (tester) async {
       when(
-        () => navigator.restorableReplaceRouteBelow(
+        () => navigator.restorableReplaceRouteBelow<void>(
           anchorRoute: any(named: 'anchorRoute'),
           newRouteBuilder: any(named: 'newRouteBuilder'),
         ),
