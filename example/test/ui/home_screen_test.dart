@@ -6,6 +6,8 @@ import 'package:mockingjay/mockingjay.dart';
 
 import '../helpers.dart';
 
+class FakeRoute<T> extends Fake implements Route<T> {}
+
 void main() {
   group('HomeScreen', () {
     const showPincodeScreenTextButtonKey =
@@ -15,9 +17,17 @@ void main() {
 
     late MockNavigator navigator;
 
+    setUpAll(() {
+      registerFallbackValue(FakeRoute<String?>());
+      registerFallbackValue(FakeRoute<QuizOption>());
+    });
+
     setUp(() {
       navigator = MockNavigator();
-      when(() => navigator.push(any())).thenAnswer((_) async => null);
+      when(() => navigator.push<String?>(any())).thenAnswer((_) async => null);
+      when(
+        () => navigator.push<QuizOption>(any()),
+      ).thenAnswer((_) async => null);
     });
 
     group('show pincode screen button', () {
@@ -49,7 +59,7 @@ void main() {
         );
 
         verify(
-          () => navigator.push(
+          () => navigator.push<String?>(
             any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
           ),
         ).called(1);
@@ -57,7 +67,7 @@ void main() {
 
       testWidgets('displays snackbar with selected pincode', (tester) async {
         when(
-          () => navigator.push(
+          () => navigator.push<String?>(
             any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
           ),
         ).thenAnswer((_) async => '123456');
@@ -84,7 +94,7 @@ void main() {
         'displays snackbar when no pincode was submitted',
         (tester) async {
           when(
-            () => navigator.push(
+            () => navigator.push<String?>(
               any(
                 that: isRoute<String?>(
                   whereName: equals('/pincode_screen'),
@@ -139,15 +149,17 @@ void main() {
 
         await tester.tap(find.byKey(showQuizDialogTextButtonKey));
 
-        verify(() => navigator.push(any(that: isRoute<QuizOption?>())))
-            .called(1);
+        verify(
+          () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+        ).called(1);
       });
 
       testWidgets(
         'displays snackbar when pizza was selected',
         (tester) async {
-          when(() => navigator.push(any(that: isRoute<QuizOption?>())))
-              .thenAnswer((_) async => QuizOption.pizza);
+          when(
+            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+          ).thenAnswer((_) async => QuizOption.pizza);
 
           await tester.pumpTest(
             builder: (context) {
@@ -171,8 +183,9 @@ void main() {
       testWidgets(
         'displays snackbar when hamburger was selected',
         (tester) async {
-          when(() => navigator.push(any(that: isRoute<QuizOption?>())))
-              .thenAnswer((_) async => QuizOption.hamburger);
+          when(
+            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+          ).thenAnswer((_) async => QuizOption.hamburger);
 
           await tester.pumpTest(
             builder: (context) {
@@ -196,8 +209,9 @@ void main() {
       testWidgets(
         'displays snackbar when no answer was selected',
         (tester) async {
-          when(() => navigator.push(any(that: isRoute<QuizOption?>())))
-              .thenAnswer((_) async => null);
+          when(
+            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+          ).thenAnswer((_) async => null);
 
           await tester.pumpTest(
             builder: (context) {

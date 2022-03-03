@@ -35,7 +35,7 @@ class MySettingsPage extends StatelessWidget {
 void main() {
   testWidgets('pushes SettingsPage when TextButton is tapped', (tester) async {
     final navigator = MockNavigator();
-    when(() => navigator.push(any())).thenAnswer((_) async {});
+    when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
     await tester.pumpWidget(
       MaterialApp(
@@ -49,7 +49,7 @@ void main() {
     await tester.tap(find.byType(TextButton));
 
     verify(
-      () => navigator.push(
+      () => navigator.push<void>(
         any(
           that: isRoute<void>(
             whereName: equals('/settings'),

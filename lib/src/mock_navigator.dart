@@ -42,6 +42,12 @@ class MockNavigator extends Mock
   /// {@macro mock_navigator}
   MockNavigator() {
     registerFallbackValue(_FakeRoute<dynamic>());
+    registerFallbackValue(_FakeRoute<Object>());
+    registerFallbackValue(_FakeRoute<void>());
+    registerFallbackValue(_FakeRoute<bool>());
+    registerFallbackValue(_FakeRoute<String>());
+    registerFallbackValue(_FakeRoute<num>());
+    registerFallbackValue(_FakeRoute<bool>());
   }
 }
 
