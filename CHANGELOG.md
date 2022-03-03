@@ -1,3 +1,7 @@
+# 0.3.0
+
+- feat: support for `mocktail ^0.3.0`
+
 # 0.2.0
 
 - feat: add mock call for `canPop` (thanks [@allisonryan0002](https://github.com/allisonryan0002)!)
