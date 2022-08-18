@@ -47,7 +47,6 @@ class MockNavigator extends Mock
     registerFallbackValue(_FakeRoute<bool>());
     registerFallbackValue(_FakeRoute<String>());
     registerFallbackValue(_FakeRoute<num>());
-    registerFallbackValue(_FakeRoute<bool>());
   }
 }
 
