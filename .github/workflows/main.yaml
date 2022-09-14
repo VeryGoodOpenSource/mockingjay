@@ -1,52 +1,23 @@
 name: mockingjay
 
-on: [pull_request]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  semantic-pull-request:
+  semantic_pull_request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v1.5.3
-
-      - name: Install Dependencies
-        run: flutter packages get
-
-      - name: Format
-        run: flutter format --set-exit-if-changed .
-
-      - name: Analyze
-        run: flutter analyze lib test example
-
-      - name: Run tests
-        run: flutter test --no-pub --coverage --test-randomize-ordering-seed random
-
-      - name: Run example project tests
-        working-directory: example/
-        run: flutter test --no-pub --test-randomize-ordering-seed random
-
-      - name: Check Code Coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
-        with:
-          path: coverage/lcov.info
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      flutter_version: 3.3.1
 
   pana:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2.3.4
-
-      - uses: subosito/flutter-action@v1.5.3
-
-      - name: Install Dependencies
-        run: |
-          flutter packages get
-          flutter pub global activate pana
-
-      - name: Verify Pub Score
-        run: ./tool/verify_pub_score.sh
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
