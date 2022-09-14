@@ -6,7 +6,7 @@ enum QuizOption {
 }
 
 class QuizDialog extends StatelessWidget {
-  const QuizDialog({Key? key}) : super(key: key);
+  const QuizDialog({super.key});
 
   static Future<QuizOption?> show(BuildContext context) {
     return showCupertinoDialog<QuizOption>(

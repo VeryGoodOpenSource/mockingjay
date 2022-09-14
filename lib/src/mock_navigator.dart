@@ -9,10 +9,10 @@ class _FakeRoute<T> extends Fake implements Route<T> {}
 class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
   const MockNavigatorProvider({
-    Key? key,
+    super.key,
     required this.navigator,
     required this.child,
-  }) : super(key: key);
+  });
 
   /// The mock navigator used to mock navigation calls.
   final MockNavigator navigator;
@@ -260,7 +260,7 @@ class _MockNavigatorState extends NavigatorState {
 
   @override
   String restorableReplace<T extends Object?>({
-    required Route oldRoute,
+    required Route<dynamic> oldRoute,
     required RestorableRouteBuilder<T> newRouteBuilder,
     Object? arguments,
   }) {
@@ -273,7 +273,7 @@ class _MockNavigatorState extends NavigatorState {
 
   @override
   String restorableReplaceRouteBelow<T extends Object?>({
-    required Route anchorRoute,
+    required Route<dynamic> anchorRoute,
     required RestorableRouteBuilder<T> newRouteBuilder,
     Object? arguments,
   }) {
