@@ -63,7 +63,7 @@ void main() {
     );
 
     testWidgets(
-      'clamps to 6 digits when 6 digits have been entered',
+      'clamps to 6 digits when more than 6 digits have been entered',
       (tester) async {
         await tester.pumpTest(
           builder: (context) {
