@@ -32,16 +32,13 @@ class _PincodeScreenState extends State<PincodeScreen> {
       _pincode = pincode;
       _errorText = null;
     });
-
-    if (_pincode.length >= 6) {
+    if (_pincode.length == 6) {
       Navigator.of(context).pop(_pincode);
     }
   }
 
   void _onSubmitted() {
-    if (_pincode.length == 6) {
-      Navigator.of(context).pop(_pincode);
-    } else {
+    if (_pincode.length != 6) {
       setState(() {
         _errorText = 'Pincode must be 6 digits long';
       });

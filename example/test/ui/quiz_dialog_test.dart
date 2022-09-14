@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:example/ui/ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockingjay/mockingjay.dart';
@@ -11,6 +14,19 @@ void main() {
 
     setUp(() {
       navigator = MockNavigator();
+    });
+
+    testWidgets('.show opens dialog', (tester) async {
+      late BuildContext context;
+      await tester.pumpTest(
+        builder: (appContext) {
+          context = appContext;
+          return const SizedBox();
+        },
+      );
+      unawaited(QuizDialog.show(context));
+      await tester.pumpAndSettle();
+      expect(find.byType(QuizDialog), findsOneWidget);
     });
 
     group('pizza button', () {
