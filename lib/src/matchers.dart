@@ -78,9 +78,13 @@ class _RouteMatcher<T> extends Matcher {
   bool get hasTypeArgument => T != dynamic;
 
   bool get hasSettingsMatcher => whereSettings != null;
+
   bool get hasNameMatcher => whereName != null;
+
   bool get hasArgumentsMatcher => whereArguments != null;
+
   bool get hasMaintainStateMatcher => whereMaintainState != null;
+
   bool get hasFullscreenDialogMatcher => whereFullscreenDialog != null;
 
   bool get hasAnyMatchers =>
@@ -249,8 +253,11 @@ class _RouteMatcher<T> extends Matcher {
       final mismatchDescriptions = <String>[];
 
       if (!settingsMatches) {
-        final mismatch = whereSettings!
-            .describeMismatchAsString(item.settings, matchState, verbose);
+        final mismatch = whereSettings!.describeMismatchAsString(
+          item.settings,
+          matchState,
+          verbose: verbose,
+        );
         mismatchDescriptions.add('`settings` $mismatch');
       }
       if (!nameMatches) {
@@ -261,8 +268,11 @@ class _RouteMatcher<T> extends Matcher {
             'instead of ${whereName!.describeAsString()}',
           );
         } else {
-          final mismatch =
-              whereName!.describeMismatchAsString(name, matchState, verbose);
+          final mismatch = whereName!.describeMismatchAsString(
+            name,
+            matchState,
+            verbose: verbose,
+          );
           mismatchDescriptions.add("the route's `name` $mismatch");
         }
       }
@@ -270,7 +280,7 @@ class _RouteMatcher<T> extends Matcher {
         final mismatch = whereArguments!.describeMismatchAsString(
           item.settings.arguments,
           matchState,
-          verbose,
+          verbose: verbose,
         );
         mismatchDescriptions.add("the route's `arguments` $mismatch");
       }
@@ -281,7 +291,7 @@ class _RouteMatcher<T> extends Matcher {
             : whereMaintainState!.describeMismatchAsString(
                 item.maintainState,
                 matchState,
-                verbose,
+                verbose: verbose,
               );
         mismatchDescriptions.add('`maintainState` $mismatch');
       }
@@ -292,7 +302,7 @@ class _RouteMatcher<T> extends Matcher {
             : whereFullscreenDialog!.describeMismatchAsString(
                 item.fullscreenDialog,
                 matchState,
-                verbose,
+                verbose: verbose,
               );
         mismatchDescriptions.add('`fullscreenDialog` $mismatch');
       }

@@ -260,7 +260,7 @@ class _MockNavigatorState extends NavigatorState {
 
   @override
   String restorableReplace<T extends Object?>({
-    required Route oldRoute,
+    required Route<dynamic> oldRoute,
     required RestorableRouteBuilder<T> newRouteBuilder,
     Object? arguments,
   }) {
@@ -273,7 +273,7 @@ class _MockNavigatorState extends NavigatorState {
 
   @override
   String restorableReplaceRouteBelow<T extends Object?>({
-    required Route anchorRoute,
+    required Route<dynamic> anchorRoute,
     required RestorableRouteBuilder<T> newRouteBuilder,
     Object? arguments,
   }) {

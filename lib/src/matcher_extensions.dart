@@ -9,7 +9,11 @@ extension MatcherExtensions on Matcher {
 
   /// Returns the mismatch description of this matcher as a string.
   // ignore: avoid_positional_boolean_parameters
-  String describeMismatchAsString(dynamic item, Map matchState, bool verbose) {
+  String describeMismatchAsString(
+    dynamic item,
+    Map<dynamic, dynamic> matchState, {
+    required bool verbose,
+  }) {
     final description = describeMismatch(
       item,
       StringDescription(),
