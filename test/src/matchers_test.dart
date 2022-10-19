@@ -259,7 +259,7 @@ is a route where the route's `name` is different.
       group('with whereMaintainState argument', () {
         test('matches any route with matching maintainState argument', () {
           expect(
-            createRoute<dynamic>(maintainState: true),
+            createRoute<dynamic>(),
             isRoute(whereMaintainState: isTrue),
           );
         });
@@ -269,7 +269,7 @@ is a route where the route's `name` is different.
           'maintainState argument',
           () {
             expectToFail(
-              createRoute<dynamic>(maintainState: true),
+              createRoute<dynamic>(),
               isRoute(whereMaintainState: isFalse),
               withMessage: 'is a route where `maintainState` '
                   'is true instead of false',
