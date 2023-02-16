@@ -22,8 +22,8 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
     with:
       includes: |
-        **/*.{dart,md,yaml}
-        !.dart_tool/**/*.{dart,yaml}
+        **/*.{md,yaml}
+        !.dart_tool/**/*.yaml
         .*/**/*.yml
       modified_files_only: false
 
