@@ -9,10 +9,10 @@ class _FakeRoute<T> extends Fake implements Route<T> {}
 class MockNavigatorProvider extends Navigator {
   /// {@macro mock_navigator_provider}
   const MockNavigatorProvider({
-    Key? key,
     required this.navigator,
     required this.child,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// The mock navigator used to mock navigation calls.
   final MockNavigator navigator;

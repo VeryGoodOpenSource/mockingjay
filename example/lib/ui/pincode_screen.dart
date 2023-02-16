@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:universal_io/io.dart';
 
 class PincodeScreen extends StatefulWidget {
-  const PincodeScreen({Key? key}) : super(key: key);
+  const PincodeScreen({super.key});
 
   static Route<String?> route() {
     return MaterialPageRoute(

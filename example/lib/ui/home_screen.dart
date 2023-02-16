@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'This is an example app showcasing the Mockingjay library.',
-                    style: theme.textTheme.headline6,
+                    style: theme.textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
                   Text.rich(
