@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MySettingsPage extends StatelessWidget {
-  const MySettingsPage({Key? key}) : super(key: key);
+  const MySettingsPage({super.key});
 
   static Route<void> route() {
     return MaterialPageRoute(

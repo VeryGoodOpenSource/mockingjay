@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:universal_io/io.dart';
 
 class PincodeScreen extends StatefulWidget {
-  const PincodeScreen({Key? key}) : super(key: key);
+  const PincodeScreen({super.key});
 
   static Route<String?> route() {
     return MaterialPageRoute(
@@ -39,9 +39,7 @@ class _PincodeScreenState extends State<PincodeScreen> {
   }
 
   void _onSubmitted() {
-    if (_pincode.length == 6) {
-      Navigator.of(context).pop(_pincode);
-    } else {
+    if (_pincode.length != 6) {
       setState(() {
         _errorText = 'Pincode must be 6 digits long';
       });
