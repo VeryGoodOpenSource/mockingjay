@@ -46,7 +46,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,9 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MySettingsPage extends StatelessWidget {
-  const MySettingsPage({Key? key}) : super(key: key);
+  const MySettingsPage({super.key});
 
-  static Route route() {
+  static Route<void> route() {
     return MaterialPageRoute(
       builder: (_) => const MySettingsPage(),
       settings: const RouteSettings(name: '/settings'),
@@ -78,7 +78,7 @@ class MySettingsPage extends StatelessWidget {
 void main() {
   testWidgets('pushes SettingsPage when TextButton is tapped', (tester) async {
     final navigator = MockNavigator();
-    when(() => navigator.push(any())).thenAnswer((_) async {});
+    when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
     await tester.pumpWidget(
       MaterialApp(
@@ -92,10 +92,17 @@ void main() {
     await tester.tap(find.byType(TextButton));
 
     verify(
-      () => navigator.push(any(that: isRoute<void>(whereName: equals('/settings')))),
+      () => navigator.push<void>(
+        any(
+          that: isRoute<void>(
+            whereName: equals('/settings'),
+          ),
+        ),
+      ),
     ).called(1);
   });
 }
+
 ```
 
 [ci_badge]: https://github.com/VeryGoodOpenSource/mockingjay/workflows/mockingjay/badge.svg
