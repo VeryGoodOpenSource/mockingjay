@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
 
+class _MockMaterialPageRoute extends MaterialPageRoute<void> {
+  _MockMaterialPageRoute({required super.builder});
+
+  void hackOverlays() {
+    for (var i = 0; i < overlayEntries.length; i++) {
+      final state = OverlayState();
+      final entry = OverlayEntry(builder: (_) => const SizedBox());
+      try {
+        // We need to call insert since that is the only way to populte the
+        // `_overlay` field in the entry. But that method calls a setState,
+        // which will fail since we are not in a widget tree.
+        //
+        // By the time the setState is called, the attribute is already set
+        // so we just ignore the error and the hack will do its job.
+        state.insert(entry);
+      } catch (_) {}
+      overlayEntries[i] = entry;
+    }
+  }
+}
+
 class _FakeRoute<T> extends Fake implements Route<T> {}
 
 /// {@template mock_navigator_provider}
@@ -29,7 +50,13 @@ class MockNavigatorProvider extends Navigator {
 
   @override
   RouteFactory? get onGenerateRoute {
-    return (_) => MaterialPageRoute<dynamic>(builder: (_) => child);
+    return (_) {
+      final route = _MockMaterialPageRoute(builder: (_) => child);
+
+      navigator._routes.add(route);
+
+      return route;
+    };
   }
 }
 
@@ -48,6 +75,8 @@ class MockNavigator extends Mock
     registerFallbackValue(_FakeRoute<String>());
     registerFallbackValue(_FakeRoute<num>());
   }
+
+  final _routes = <_MockMaterialPageRoute>[];
 }
 
 /// A mixin necessary when implementing a [MockNavigator].
@@ -73,6 +102,15 @@ class _MockNavigatorState extends NavigatorState {
 
   @override
   Widget build(BuildContext context) => _child;
+
+  @override
+  void dispose() {
+    for (final route in _navigator._routes) {
+      route.hackOverlays();
+    }
+
+    super.dispose();
+  }
 
   @override
   Future<T?> push<T extends Object?>(Route<T> route) {
