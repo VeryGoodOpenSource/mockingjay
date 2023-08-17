@@ -9,7 +9,7 @@ class _MockMaterialPageRoute extends MaterialPageRoute<void> {
       final state = OverlayState();
       final entry = OverlayEntry(builder: (_) => const SizedBox());
       try {
-        // We need to call insert since that is the only way to populte the
+        // We need to call insert since that is the only way to populate the
         // `_overlay` field in the entry. But that method calls a setState,
         // which will fail since we are not in a widget tree.
         //
