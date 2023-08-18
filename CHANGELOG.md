@@ -1,3 +1,8 @@
+# 0.4.0
+
+- feat: support for `mocktail ^1.0.0`
+- feat: support for `flutter 3.13.0`
+
 # 0.3.0
 
 - feat: support for `mocktail ^0.3.0`
