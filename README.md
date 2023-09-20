@@ -17,11 +17,10 @@ A package that makes it easy to mock, test and verify navigation calls in Flutte
 
 ## Usage
 
-To use the package in your tests, add it to your dev dependencies in your `pubspec.yaml`:
+To use the package in your tests, install it via `dart pub add`:
 
-```yaml
-dev_dependencies:
-  mockingjay: ^0.3.0
+```shell
+dart pub add dev:mockingjay
 ```
 
 Then, in your tests, create a `MockNavigator` class like so:
