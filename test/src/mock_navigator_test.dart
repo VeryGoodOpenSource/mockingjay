@@ -198,6 +198,8 @@ void main() {
         ),
       );
 
+      // Called by NavigatorState.didChangeDependencies initially
+      verify(() => navigator.canPop()).called(1);
       await tester.tap(find.byType(TextButton));
       verify(() => navigator.canPop()).called(1);
     });
