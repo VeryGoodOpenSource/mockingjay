@@ -67,13 +67,18 @@ class MockNavigator extends Mock
     with _MockNavigatorDiagnosticsMixin
     implements NavigatorState {
   /// {@macro mock_navigator}
-  MockNavigator() {
+  ///
+  /// [canPop()] is automatically stubbed to return the value of
+  /// [initialCanPop].
+  MockNavigator({bool initialCanPop = false}) {
     registerFallbackValue(_FakeRoute<dynamic>());
     registerFallbackValue(_FakeRoute<Object>());
     registerFallbackValue(_FakeRoute<void>());
     registerFallbackValue(_FakeRoute<bool>());
     registerFallbackValue(_FakeRoute<String>());
     registerFallbackValue(_FakeRoute<num>());
+
+    when(canPop).thenReturn(initialCanPop);
   }
 
   final _routes = <_MockMaterialPageRoute>[];
