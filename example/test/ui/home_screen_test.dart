@@ -24,6 +24,7 @@ void main() {
 
     setUp(() {
       navigator = MockNavigator();
+      when(() => navigator.canPop()).thenReturn(true);
       when(() => navigator.push<String?>(any())).thenAnswer((_) async => null);
       when(
         () => navigator.push<QuizOption>(any()),
