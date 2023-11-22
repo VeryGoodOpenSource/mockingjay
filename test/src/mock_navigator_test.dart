@@ -45,6 +45,7 @@ void main() {
 
     setUp(() {
       navigator = MockNavigator();
+      when(() => navigator.canPop()).thenReturn(true);
     });
 
     test('toString returns normally', () {

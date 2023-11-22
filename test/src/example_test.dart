@@ -35,6 +35,7 @@ class MySettingsPage extends StatelessWidget {
 void main() {
   testWidgets('pushes SettingsPage when TextButton is tapped', (tester) async {
     final navigator = MockNavigator();
+    when(navigator.canPop).thenReturn(true);
     when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
     await tester.pumpWidget(
