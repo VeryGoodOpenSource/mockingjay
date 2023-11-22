@@ -1,3 +1,11 @@
+# 0.5.0
+
+- chore(deps): bump very_good_analysis from 4.0.0+1 to 5.1.0 ([#56](https://github.com/VeryGoodOpenSource/mockingjay/pull/56))
+- chore: update Very Good Analysis to 5.1.0 ([#57](https://github.com/VeryGoodOpenSource/mockingjay/pull/57))
+- chore: updated sdk constraints for example ([#60](https://github.com/VeryGoodOpenSource/mockingjay/pull/60))
+- docs: update installation instructions readme ([#61](https://github.com/VeryGoodOpenSource/mockingjay/pull/61))
+- fix!: Updates for Flutter 3.16.0/Dart 3.2 ([#65](https://github.com/VeryGoodOpenSource/mockingjay/pull/65))
+
 # 0.4.0
 
 - feat: support for `mocktail ^1.0.0`
