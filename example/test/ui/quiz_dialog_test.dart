@@ -14,6 +14,7 @@ void main() {
 
     setUp(() {
       navigator = MockNavigator();
+      when(() => navigator.canPop()).thenReturn(true);
     });
 
     testWidgets('.show opens dialog', (tester) async {

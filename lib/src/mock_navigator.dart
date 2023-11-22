@@ -6,7 +6,8 @@ class _MockMaterialPageRoute extends MaterialPageRoute<void> {
 
   void hackOverlays() {
     for (var i = 0; i < overlayEntries.length; i++) {
-      final state = OverlayState();
+      // Entry can only be inserted when the state is mounted
+      final state = _MockOverlayState().._mounted = true;
       final entry = OverlayEntry(builder: (_) => const SizedBox());
       try {
         // We need to call insert since that is the only way to populate the
@@ -17,9 +18,19 @@ class _MockMaterialPageRoute extends MaterialPageRoute<void> {
         // so we just ignore the error and the hack will do its job.
         state.insert(entry);
       } catch (_) {}
+      // Set mounted back to false to make sure the state doesn't get
+      // marked as dirty during OverlayEntry.remove().
+      state._mounted = false;
       overlayEntries[i] = entry;
     }
   }
+}
+
+class _MockOverlayState extends OverlayState {
+  late bool _mounted;
+
+  @override
+  bool get mounted => _mounted;
 }
 
 class _FakeRoute<T> extends Fake implements Route<T> {}
