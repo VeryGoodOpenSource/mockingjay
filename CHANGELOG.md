@@ -1,5 +1,7 @@
 # 0.5.0
 
+**Note**: This release supports [Flutter 3.16.0](https://docs.flutter.dev/release/release-notes/release-notes-3.16.0), for migration details see the [release notes](https://github.com/VeryGoodOpenSource/mockingjay/releases/tag/v0.5.0).
+
 - chore(deps): bump very_good_analysis from 4.0.0+1 to 5.1.0 ([#56](https://github.com/VeryGoodOpenSource/mockingjay/pull/56))
 - chore: update Very Good Analysis to 5.1.0 ([#57](https://github.com/VeryGoodOpenSource/mockingjay/pull/57))
 - chore: updated sdk constraints for example ([#60](https://github.com/VeryGoodOpenSource/mockingjay/pull/60))
