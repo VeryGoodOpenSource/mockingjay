@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await Navigator.of(context).push(PincodeScreen.route());
 
-    if (mounted) {
+    if (!mounted) {
       return;
     }
 
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await QuizDialog.show(context);
 
-    if (mounted) {
+    if (!mounted) {
       return;
     }
 
