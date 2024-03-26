@@ -11,7 +11,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<void> _showPincodeScreen(BuildContext context) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await Navigator.of(context).push(PincodeScreen.route());
+
+    if (!mounted) {
+      return;
+    }
 
     late final String snackBarContent;
 
@@ -21,20 +26,23 @@ class _HomeScreenState extends State<HomeScreen> {
       snackBarContent = 'Pincode is "$result" 🔒';
     }
 
-    if (mounted) {
-      ScaffoldMessenger.of(context)
-        ..removeCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            behavior: SnackBarBehavior.floating,
-            content: Text(snackBarContent),
-          ),
-        );
-    }
+    scaffoldMessenger
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(snackBarContent),
+        ),
+      );
   }
 
   Future<void> _showQuizDialog(BuildContext context) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await QuizDialog.show(context);
+
+    if (!mounted) {
+      return;
+    }
 
     late final String snackBarContent;
 
@@ -46,16 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
       snackBarContent = 'Hamburger all the way! 🍔';
     }
 
-    if (mounted) {
-      ScaffoldMessenger.of(context)
-        ..removeCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            behavior: SnackBarBehavior.floating,
-            content: Text(snackBarContent),
-          ),
-        );
-    }
+    scaffoldMessenger
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(snackBarContent),
+        ),
+      );
   }
 
   @override
