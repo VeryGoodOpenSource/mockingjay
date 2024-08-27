@@ -1,3 +1,8 @@
+# 0.6.0 
+
+- chore: sync min Dart SDK with min Flutter SDK ([#70](https://github.com/VeryGoodOpenSource/mockingjay/pull/70))
+- chore: tighten dependencies ([#74](https://github.com/VeryGoodOpenSource/mockingjay/pull/74))
+
 # 0.5.0
 
 **Note**: This release supports [Flutter 3.16.0](https://docs.flutter.dev/release/release-notes/release-notes-3.16.0), for migration details see the [release notes](https://github.com/VeryGoodOpenSource/mockingjay/releases/tag/v0.5.0).
