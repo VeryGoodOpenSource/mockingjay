@@ -17,7 +17,7 @@ class _MockMaterialPageRoute extends MaterialPageRoute<void> {
         // By the time the setState is called, the attribute is already set
         // so we just ignore the error and the hack will do its job.
         state.insert(entry);
-      } on Exception catch (_) {}
+      } on Object catch (_) {}
       // Set mounted back to false to make sure the state doesn't get
       // marked as dirty during OverlayEntry.remove().
       state._mounted = false;
