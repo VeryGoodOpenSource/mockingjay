@@ -27,6 +27,7 @@ Matcher isRoute<T extends Object?>({
 }) {
   // Remove once `named` argument is removed.
   if (whereName == null && named != null) {
+    // Nullable parameter so assignment is OK
     // ignore: parameter_assignments
     whereName = equals(named);
   }
