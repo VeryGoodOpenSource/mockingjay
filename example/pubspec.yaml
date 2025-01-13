@@ -7,15 +7,15 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
-  bloc: ^8.1.4
+  bloc: ">=8.1.4 <10.0.0"
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ">=8.1.6 <10.0.0"
   universal_io: ^2.2.2
 
 dev_dependencies:
-  bloc_test: ^9.1.7
+  bloc_test: ">=9.1.7 <11.0.0"
   flutter_test:
     sdk: flutter
   mockingjay:
