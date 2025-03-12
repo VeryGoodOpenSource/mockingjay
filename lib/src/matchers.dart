@@ -27,7 +27,7 @@ Matcher isRoute<T extends Object?>({
 }) {
   // Remove once `named` argument is removed.
   if (whereName == null && named != null) {
-    // Will remove this on a later PR
+    // Deprecation will be removed with https://github.com/VeryGoodOpenSource/mockingjay/pull/86
     // ignore: parameter_assignments
     whereName = equals(named);
   }
