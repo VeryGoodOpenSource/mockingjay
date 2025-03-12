@@ -84,7 +84,7 @@ class _RouteMatcher<T> extends Matcher {
       hasFullscreenDialogMatcher;
 
   /// Takes an [input] string that looks like `FooBarRoute<MyType>` and extracts
-  /// the part "MyType".
+  /// the part `MyType`.
   ///
   /// If the `Route<` part cannot be found, it returns the input string
   /// unchaged.
