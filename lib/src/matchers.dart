@@ -18,19 +18,12 @@ import 'package:test/test.dart';
 ///
 /// ```
 Matcher isRoute<T extends Object?>({
-  @Deprecated('Use `whereName` instead') String? named,
   Matcher? whereSettings,
   Matcher? whereName,
   Matcher? whereArguments,
   Matcher? whereMaintainState,
   Matcher? whereFullscreenDialog,
 }) {
-  // Remove once `named` argument is removed.
-  if (whereName == null && named != null) {
-    // ignore: parameter_assignments
-    whereName = equals(named);
-  }
-
   assert(
     whereSettings == null || (whereName == null && whereArguments == null),
     'Cannot specify both `whereSettings` and `whereName` or `whereArguments`',
@@ -90,8 +83,8 @@ class _RouteMatcher<T> extends Matcher {
       hasMaintainStateMatcher ||
       hasFullscreenDialogMatcher;
 
-  /// Takes an [input] string that looks like "FooBarRoute<MyType>" and extracts
-  /// the part "MyType".
+  /// Takes an [input] string that looks like `FooBarRoute<MyType>` and extracts
+  /// the part `MyType`.
   ///
   /// If the `Route<` part cannot be found, it returns the input string
   /// unchaged.
@@ -293,8 +286,8 @@ class _RouteMatcher<T> extends Matcher {
       if (!maintainStateMatches) {
         final mismatch =
             item is! ModalRoute
-                ? 'is not a property on `${item.runtimeType}` and can only be used '
-                    'with `ModalRoute`s'
+                ? 'is not a property on `${item.runtimeType}` and can only be '
+                    'used with `ModalRoute`s'
                 : whereMaintainState!.describeMismatchAsString(
                   item.maintainState,
                   matchState,
@@ -305,8 +298,8 @@ class _RouteMatcher<T> extends Matcher {
       if (!fullscreenDialogMatches) {
         final mismatch =
             item is! PageRoute
-                ? 'is not a property on `${item.runtimeType}` and can only be used '
-                    'with `PageRoute`s'
+                ? 'is not a property on `${item.runtimeType}` and can only be '
+                    'used with `PageRoute`s'
                 : whereFullscreenDialog!.describeMismatchAsString(
                   item.fullscreenDialog,
                   matchState,
