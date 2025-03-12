@@ -51,11 +51,7 @@ void main() {
 
     verify(
       () => navigator.push<void>(
-        any(
-          that: isRoute<void>(
-            whereName: equals('/settings'),
-          ),
-        ),
+        any(that: isRoute<void>(whereName: equals('/settings'))),
       ),
     ).called(1);
   });
