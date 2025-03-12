@@ -18,20 +18,12 @@ import 'package:test/test.dart';
 ///
 /// ```
 Matcher isRoute<T extends Object?>({
-  @Deprecated('Use `whereName` instead') String? named,
   Matcher? whereSettings,
   Matcher? whereName,
   Matcher? whereArguments,
   Matcher? whereMaintainState,
   Matcher? whereFullscreenDialog,
 }) {
-  // Remove once `named` argument is removed.
-  if (whereName == null && named != null) {
-    // Deprecation will be removed with https://github.com/VeryGoodOpenSource/mockingjay/pull/86
-    // ignore: parameter_assignments
-    whereName = equals(named);
-  }
-
   assert(
     whereSettings == null || (whereName == null && whereArguments == null),
     'Cannot specify both `whereSettings` and `whereName` or `whereArguments`',
@@ -49,11 +41,7 @@ Matcher isRoute<T extends Object?>({
 /// Returns a matcher that matches the [RouteSettings] from the given [route].
 Matcher equalsSettingsOf(Route<dynamic> route) {
   return isA<RouteSettings>()
-      .having(
-        (s) => s.name,
-        'name',
-        equals(route.settings.name),
-      )
+      .having((s) => s.name, 'name', equals(route.settings.name))
       .having(
         (s) => s.arguments,
         'arguments',
@@ -189,19 +177,25 @@ class _RouteMatcher<T> extends Matcher {
     if (item is Route) {
       final typeMatches = !hasTypeArgument || item is Route<T>;
 
-      final settingsMatches = !hasSettingsMatcher ||
+      final settingsMatches =
+          !hasSettingsMatcher ||
           whereSettings!.matches(item.settings, matchState);
       final nameMatches =
           !hasNameMatcher || whereName!.matches(item.settings.name, matchState);
-      final argumentsMatches = !hasArgumentsMatcher ||
+      final argumentsMatches =
+          !hasArgumentsMatcher ||
           whereArguments!.matches(item.settings.arguments, matchState);
-      final maintainStateMatches = !hasMaintainStateMatcher ||
+      final maintainStateMatches =
+          !hasMaintainStateMatcher ||
           (item is ModalRoute &&
               whereMaintainState!.matches(item.maintainState, matchState));
-      final fullscreenDialogMatches = !hasFullscreenDialogMatcher ||
+      final fullscreenDialogMatches =
+          !hasFullscreenDialogMatcher ||
           (item is PageRoute &&
-              whereFullscreenDialog!
-                  .matches(item.fullscreenDialog, matchState));
+              whereFullscreenDialog!.matches(
+                item.fullscreenDialog,
+                matchState,
+              ));
 
       return typeMatches &&
           settingsMatches &&
@@ -230,16 +224,20 @@ class _RouteMatcher<T> extends Matcher {
 
     final typeMatches = !hasTypeArgument || item is Route<T>;
 
-    final settingsMatches = !hasSettingsMatcher ||
+    final settingsMatches =
+        !hasSettingsMatcher ||
         whereSettings!.matches(item.settings, matchState);
     final nameMatches =
         !hasNameMatcher || whereName!.matches(item.settings.name, matchState);
-    final argumentsMatches = !hasArgumentsMatcher ||
+    final argumentsMatches =
+        !hasArgumentsMatcher ||
         whereArguments!.matches(item.settings.arguments, matchState);
-    final maintainStateMatches = !hasMaintainStateMatcher ||
+    final maintainStateMatches =
+        !hasMaintainStateMatcher ||
         (item is ModalRoute &&
             whereMaintainState!.matches(item.maintainState, matchState));
-    final fullscreenDialogMatches = !hasFullscreenDialogMatcher ||
+    final fullscreenDialogMatches =
+        !hasFullscreenDialogMatcher ||
         (item is PageRoute &&
             whereFullscreenDialog!.matches(item.fullscreenDialog, matchState));
 
@@ -286,25 +284,27 @@ class _RouteMatcher<T> extends Matcher {
         mismatchDescriptions.add("the route's `arguments` $mismatch");
       }
       if (!maintainStateMatches) {
-        final mismatch = item is! ModalRoute
-            ? 'is not a property on `${item.runtimeType}` and can only be used '
-                'with `ModalRoute`s'
-            : whereMaintainState!.describeMismatchAsString(
-                item.maintainState,
-                matchState,
-                verbose: verbose,
-              );
+        final mismatch =
+            item is! ModalRoute
+                ? 'is not a property on `${item.runtimeType}` and can only be used '
+                    'with `ModalRoute`s'
+                : whereMaintainState!.describeMismatchAsString(
+                  item.maintainState,
+                  matchState,
+                  verbose: verbose,
+                );
         mismatchDescriptions.add('`maintainState` $mismatch');
       }
       if (!fullscreenDialogMatches) {
-        final mismatch = item is! PageRoute
-            ? 'is not a property on `${item.runtimeType}` and can only be used '
-                'with `PageRoute`s'
-            : whereFullscreenDialog!.describeMismatchAsString(
-                item.fullscreenDialog,
-                matchState,
-                verbose: verbose,
-              );
+        final mismatch =
+            item is! PageRoute
+                ? 'is not a property on `${item.runtimeType}` and can only be used '
+                    'with `PageRoute`s'
+                : whereFullscreenDialog!.describeMismatchAsString(
+                  item.fullscreenDialog,
+                  matchState,
+                  verbose: verbose,
+                );
         mismatchDescriptions.add('`fullscreenDialog` $mismatch');
       }
 
