@@ -453,5 +453,21 @@ void main() {
         ),
       ).called(1);
     });
+
+    testWidgets('mocks .removeRouteBelow calls', (tester) async {
+      when(() => navigator.removeRouteBelow(any())).thenAnswer((_) {});
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).removeRouteBelow(testRoute),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+
+      verify(() => navigator.removeRouteBelow(testRoute)).called(1);
+    });
   });
 }

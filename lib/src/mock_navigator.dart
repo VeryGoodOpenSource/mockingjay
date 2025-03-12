@@ -332,4 +332,9 @@ class _MockNavigatorState extends NavigatorState {
       arguments: arguments,
     );
   }
+
+  @override
+  void removeRouteBelow(Route<dynamic> anchorRoute) {
+    return _navigator.removeRouteBelow(anchorRoute);
+  }
 }
