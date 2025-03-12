@@ -51,7 +51,7 @@ void main() {
       group('constructor', () {
         test('wraps deprecated name value in equals matcher', () {
           expect(
-            // Will remove this on a later PR
+            // Deprecation will be removed with https://github.com/VeryGoodOpenSource/mockingjay/pull/86
             // ignore: deprecated_member_use_from_same_package
             isRoute(named: '/test'),
             isA<dynamic>().having(
