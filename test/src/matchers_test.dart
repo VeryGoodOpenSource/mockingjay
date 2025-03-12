@@ -37,10 +37,7 @@ void main() {
         bool fullscreenDialog = false,
       }) {
         return MaterialPageRoute<T>(
-          settings: RouteSettings(
-            name: name,
-            arguments: arguments,
-          ),
+          settings: RouteSettings(name: name, arguments: arguments),
           maintainState: maintainState,
           fullscreenDialog: fullscreenDialog,
           builder: (_) => const SizedBox(),
@@ -49,19 +46,17 @@ void main() {
 
       group('constructor', () {
         test(
-          'throws AssertionError when both whereSettings '
-          'and whereName or whereArguments matchers are provided',
-          () {
-            expect(
-              () => isRoute(
-                whereSettings: isNotNull,
-                whereName: isNotNull,
-                whereArguments: isNotNull,
-              ),
-              throwsAssertionError,
-            );
-          },
-        );
+            'throws AssertionError when both whereSettings '
+            'and whereName or whereArguments matchers are provided', () {
+          expect(
+            () => isRoute(
+              whereSettings: isNotNull,
+              whereName: isNotNull,
+              whereArguments: isNotNull,
+            ),
+            throwsAssertionError,
+          );
+        });
       });
 
       group('without arguments', () {
@@ -130,43 +125,44 @@ void main() {
           expect(
             createRoute<dynamic>(name: '/test'),
             isRoute(
-              whereSettings:
-                  isA<RouteSettings>().having((s) => s.name, 'name', '/test'),
+              whereSettings: isA<RouteSettings>().having(
+                (s) => s.name,
+                'name',
+                '/test',
+              ),
             ),
           );
         });
 
         test(
-          'does not match anything that is not a route '
-          'with matching settings',
-          () {
-            expectToFail(
-              createRoute<dynamic>(name: '/test'),
-              isRoute(whereSettings: equalsSettingsOf(createRoute<String>())),
-              withMessage:
-                  "is a route where `settings` has `name` with value '/test'",
-            );
-            expectToFail(
-              createRoute<dynamic>(name: '/other_name'),
-              isRoute(
-                whereSettings: equalsSettingsOf(
-                  createRoute<dynamic>(name: '/test'),
-                ),
+            'does not match anything that is not a route '
+            'with matching settings', () {
+          expectToFail(
+            createRoute<dynamic>(name: '/test'),
+            isRoute(whereSettings: equalsSettingsOf(createRoute<String>())),
+            withMessage:
+                "is a route where `settings` has `name` with value '/test'",
+          );
+          expectToFail(
+            createRoute<dynamic>(name: '/other_name'),
+            isRoute(
+              whereSettings: equalsSettingsOf(
+                createRoute<dynamic>(name: '/test'),
               ),
-              withMessage: '''
+            ),
+            withMessage: '''
 is a route where `settings` has `name` with value '/other_name' which is different.
           Expected: /test
             Actual: /other_name ...
                      ^
            Differ at offset 1''',
-            );
-            expectToFail(
-              1,
-              isRoute(whereSettings: equalsSettingsOf(createRoute<dynamic>())),
-              withMessage: 'is not a route but an instance of `int`',
-            );
-          },
-        );
+          );
+          expectToFail(
+            1,
+            isRoute(whereSettings: equalsSettingsOf(createRoute<dynamic>())),
+            withMessage: 'is not a route but an instance of `int`',
+          );
+        });
       });
 
       group('with whereName argument', () {
@@ -244,36 +240,31 @@ is a route where the route's `name` is different.
 
       group('with whereMaintainState argument', () {
         test('matches any route with matching maintainState argument', () {
-          expect(
-            createRoute<dynamic>(),
-            isRoute(whereMaintainState: isTrue),
-          );
+          expect(createRoute<dynamic>(), isRoute(whereMaintainState: isTrue));
         });
 
         test(
-          'does not match anything that is not a route with matching '
-          'maintainState argument',
-          () {
-            expectToFail(
-              createRoute<dynamic>(),
-              isRoute(whereMaintainState: isFalse),
-              withMessage: 'is a route where `maintainState` '
-                  'is true instead of false',
-            );
-            expectToFail(
-              NonModalRoute(),
-              isRoute(whereMaintainState: isTrue),
-              withMessage: 'is a route where `maintainState` '
-                  'is not a property on `NonModalRoute` and can only be used '
-                  'with `ModalRoute`s',
-            );
-            expectToFail(
-              1,
-              isRoute(whereMaintainState: isTrue),
-              withMessage: 'is not a route but an instance of `int`',
-            );
-          },
-        );
+            'does not match anything that is not a route with matching '
+            'maintainState argument', () {
+          expectToFail(
+            createRoute<dynamic>(),
+            isRoute(whereMaintainState: isFalse),
+            withMessage: 'is a route where `maintainState` '
+                'is true instead of false',
+          );
+          expectToFail(
+            NonModalRoute(),
+            isRoute(whereMaintainState: isTrue),
+            withMessage: 'is a route where `maintainState` '
+                'is not a property on `NonModalRoute` and can only be used '
+                'with `ModalRoute`s',
+          );
+          expectToFail(
+            1,
+            isRoute(whereMaintainState: isTrue),
+            withMessage: 'is not a route but an instance of `int`',
+          );
+        });
       });
 
       group('with whereFullscreenDialog argument', () {
@@ -285,29 +276,27 @@ is a route where the route's `name` is different.
         });
 
         test(
-          'does not match anything that is not a route with matching '
-          'fullscreenDialog argument',
-          () {
-            expectToFail(
-              createRoute<dynamic>(fullscreenDialog: true),
-              isRoute(whereFullscreenDialog: isFalse),
-              withMessage: 'is a route where `fullscreenDialog` '
-                  'is true instead of false',
-            );
-            expectToFail(
-              NonModalRoute(),
-              isRoute(whereFullscreenDialog: isFalse),
-              withMessage: 'is a route where `fullscreenDialog` '
-                  'is not a property on `NonModalRoute` and can only be used '
-                  'with `PageRoute`s',
-            );
-            expectToFail(
-              1,
-              isRoute(whereFullscreenDialog: isTrue),
-              withMessage: 'is not a route but an instance of `int`',
-            );
-          },
-        );
+            'does not match anything that is not a route with matching '
+            'fullscreenDialog argument', () {
+          expectToFail(
+            createRoute<dynamic>(fullscreenDialog: true),
+            isRoute(whereFullscreenDialog: isFalse),
+            withMessage: 'is a route where `fullscreenDialog` '
+                'is true instead of false',
+          );
+          expectToFail(
+            NonModalRoute(),
+            isRoute(whereFullscreenDialog: isFalse),
+            withMessage: 'is a route where `fullscreenDialog` '
+                'is not a property on `NonModalRoute` and can only be used '
+                'with `PageRoute`s',
+          );
+          expectToFail(
+            1,
+            isRoute(whereFullscreenDialog: isTrue),
+            withMessage: 'is not a route but an instance of `int`',
+          );
+        });
       });
 
       test('returns all relevant mismatches in one log', () {

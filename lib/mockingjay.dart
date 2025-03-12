@@ -1,6 +1,6 @@
 /// A package that makes it easy to mock, test and verify
 /// navigation calls in Flutter.
-library mockingjay;
+library;
 
 export 'package:mocktail/mocktail.dart';
 

@@ -41,11 +41,7 @@ Matcher isRoute<T extends Object?>({
 /// Returns a matcher that matches the [RouteSettings] from the given [route].
 Matcher equalsSettingsOf(Route<dynamic> route) {
   return isA<RouteSettings>()
-      .having(
-        (s) => s.name,
-        'name',
-        equals(route.settings.name),
-      )
+      .having((s) => s.name, 'name', equals(route.settings.name))
       .having(
         (s) => s.arguments,
         'arguments',
@@ -87,8 +83,8 @@ class _RouteMatcher<T> extends Matcher {
       hasMaintainStateMatcher ||
       hasFullscreenDialogMatcher;
 
-  /// Takes an [input] string that looks like "FooBarRoute<MyType>" and extracts
-  /// the part "MyType".
+  /// Takes an [input] string that looks like `FooBarRoute<MyType>` and extracts
+  /// the part `MyType`.
   ///
   /// If the `Route<` part cannot be found, it returns the input string
   /// unchaged.
@@ -192,8 +188,10 @@ class _RouteMatcher<T> extends Matcher {
               whereMaintainState!.matches(item.maintainState, matchState));
       final fullscreenDialogMatches = !hasFullscreenDialogMatcher ||
           (item is PageRoute &&
-              whereFullscreenDialog!
-                  .matches(item.fullscreenDialog, matchState));
+              whereFullscreenDialog!.matches(
+                item.fullscreenDialog,
+                matchState,
+              ));
 
       return typeMatches &&
           settingsMatches &&
