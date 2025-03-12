@@ -18,19 +18,12 @@ import 'package:test/test.dart';
 ///
 /// ```
 Matcher isRoute<T extends Object?>({
-  @Deprecated('Use `whereName` instead') String? named,
   Matcher? whereSettings,
   Matcher? whereName,
   Matcher? whereArguments,
   Matcher? whereMaintainState,
   Matcher? whereFullscreenDialog,
 }) {
-  // Remove once `named` argument is removed.
-  if (whereName == null && named != null) {
-    // ignore: parameter_assignments
-    whereName = equals(named);
-  }
-
   assert(
     whereSettings == null || (whereName == null && whereArguments == null),
     'Cannot specify both `whereSettings` and `whereName` or `whereArguments`',

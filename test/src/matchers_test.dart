@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matcher/src/feature_matcher.dart';
 import 'package:mockingjay/mockingjay.dart';
 
 class NonModalRoute extends Mock implements TransitionRoute<void> {}
@@ -49,19 +48,6 @@ void main() {
       }
 
       group('constructor', () {
-        test('wraps deprecated name value in equals matcher', () {
-          expect(
-            // ignore: deprecated_member_use_from_same_package
-            isRoute(named: '/test'),
-            isA<dynamic>().having(
-              // ignore: avoid_dynamic_calls
-              (dynamic m) => m.whereName,
-              'whereName',
-              isA<FeatureMatcher<String>>(),
-            ),
-          );
-        });
-
         test(
           'throws AssertionError when both whereSettings '
           'and whereName or whereArguments matchers are provided',
