@@ -27,6 +27,7 @@ Matcher isRoute<T extends Object?>({
 }) {
   // Remove once `named` argument is removed.
   if (whereName == null && named != null) {
+    // Will remove this on a later PR
     // ignore: parameter_assignments
     whereName = equals(named);
   }
@@ -94,7 +95,7 @@ class _RouteMatcher<T> extends Matcher {
       hasMaintainStateMatcher ||
       hasFullscreenDialogMatcher;
 
-  /// Takes an [input] string that looks like "FooBarRoute<MyType>" and extracts
+  /// Takes an [input] string that looks like `FooBarRoute<MyType>` and extracts
   /// the part "MyType".
   ///
   /// If the `Route<` part cannot be found, it returns the input string

@@ -51,9 +51,11 @@ void main() {
       group('constructor', () {
         test('wraps deprecated name value in equals matcher', () {
           expect(
+            // Will remove this on a later PR
             // ignore: deprecated_member_use_from_same_package
             isRoute(named: '/test'),
             isA<dynamic>().having(
+              // Will remove this on a later PR
               // ignore: avoid_dynamic_calls
               (dynamic m) => m.whereName,
               'whereName',
