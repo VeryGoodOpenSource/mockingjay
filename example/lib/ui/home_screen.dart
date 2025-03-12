@@ -70,9 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final monospaceFontFamily = Platform.isIOS ? 'Courier' : 'monospace';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mockingjay Example'),
-      ),
+      appBar: AppBar(title: const Text('Mockingjay Example')),
       body: Center(
         child: DefaultTextStyle.merge(
           textAlign: TextAlign.center,
@@ -91,7 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     TextSpan(
                       children: [
                         const TextSpan(
-                          text: 'Use one of the following buttons to trigger a '
+                          text:
+                              'Use one of the following buttons to trigger a '
                               'navigation change.\n'
                               'Check out the test files in the ',
                         ),

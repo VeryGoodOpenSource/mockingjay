@@ -41,23 +41,20 @@ void main() {
         expect(find.text('🍕'), findsOneWidget);
       });
 
-      testWidgets(
-        'pops route with pizza option when pressed',
-        (tester) async {
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const QuizDialog(),
-              );
-            },
-          );
+      testWidgets('pops route with pizza option when pressed', (tester) async {
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const QuizDialog(),
+            );
+          },
+        );
 
-          await tester.tap(find.text('🍕'));
+        await tester.tap(find.text('🍕'));
 
-          verify(() => navigator.pop(QuizOption.pizza)).called(1);
-        },
-      );
+        verify(() => navigator.pop(QuizOption.pizza)).called(1);
+      });
     });
 
     group('hamburger button', () {
@@ -71,23 +68,22 @@ void main() {
         expect(find.text('🍔'), findsOneWidget);
       });
 
-      testWidgets(
-        'pops route with hamburger option when pressed',
-        (tester) async {
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const QuizDialog(),
-              );
-            },
-          );
+      testWidgets('pops route with hamburger option when pressed', (
+        tester,
+      ) async {
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const QuizDialog(),
+            );
+          },
+        );
 
-          await tester.tap(find.text('🍔'));
+        await tester.tap(find.text('🍔'));
 
-          verify(() => navigator.pop(QuizOption.hamburger)).called(1);
-        },
-      );
+        verify(() => navigator.pop(QuizOption.hamburger)).called(1);
+      });
     });
   });
 }
