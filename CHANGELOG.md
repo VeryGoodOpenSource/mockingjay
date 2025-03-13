@@ -1,3 +1,11 @@
+# 1.0.0
+
+> Note: This release has breaking changes
+
+- chore: bumping flutter version to 3.29.0 and bumping example dependencies ([#88](https://github.com/VeryGoodOpenSource/mockingjay/pull/88))
+- chore: bumping very good analysis from 6.0.0 to 7.0.0 ([#87](https://github.com/VeryGoodOpenSource/mockingjay/pull/87))
+- chore!: breaking change: removing `named` deprecated parameter ([#86](https://github.com/VeryGoodOpenSource/mockingjay/pull/86))
+
 # 0.6.0 
 
 - chore: sync min Dart SDK with min Flutter SDK ([#70](https://github.com/VeryGoodOpenSource/mockingjay/pull/70))
