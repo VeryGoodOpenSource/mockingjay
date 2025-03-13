@@ -51,9 +51,7 @@ class _PincodeScreenState extends State<PincodeScreen> {
     final monospaceFontFamily = Platform.isIOS ? 'Courier' : 'monospace';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pincode Screen'),
-      ),
+      appBar: AppBar(title: const Text('Pincode Screen')),
       body: Center(
         child: DefaultTextStyle.merge(
           textAlign: TextAlign.center,

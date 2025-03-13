@@ -4,18 +4,18 @@ version: 0.0.1
 homepage: https://github.com/VeryGoodOpenSource/mockingjay
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.7.0
 
 dependencies:
-  bloc: ^8.1.4
+  bloc: ^9.0.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.1.0
   universal_io: ^2.2.2
 
 dev_dependencies:
-  bloc_test: ^9.1.7
+  bloc_test: ^10.0.0
   flutter_test:
     sdk: flutter
   mockingjay:

@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-enum QuizOption {
-  pizza,
-  hamburger,
-}
+enum QuizOption { pizza, hamburger }
 
 class QuizDialog extends StatelessWidget {
   const QuizDialog({super.key});

@@ -133,10 +133,7 @@ class _MockNavigatorState extends NavigatorState {
     String routeName, {
     Object? arguments,
   }) {
-    return _navigator.pushNamed<T>(
-      routeName,
-      arguments: arguments,
-    );
+    return _navigator.pushNamed<T>(routeName, arguments: arguments);
   }
 
   @override
@@ -157,10 +154,7 @@ class _MockNavigatorState extends NavigatorState {
     Route<T> newRoute, {
     TO? result,
   }) {
-    return _navigator.pushReplacement<T, TO>(
-      newRoute,
-      result: result,
-    );
+    return _navigator.pushReplacement<T, TO>(newRoute, result: result);
   }
 
   @override
@@ -214,10 +208,7 @@ class _MockNavigatorState extends NavigatorState {
     Route<T> newRoute,
     RoutePredicate predicate,
   ) {
-    return _navigator.pushAndRemoveUntil<T>(
-      newRoute,
-      predicate,
-    );
+    return _navigator.pushAndRemoveUntil<T>(newRoute, predicate);
   }
 
   @override
@@ -238,10 +229,7 @@ class _MockNavigatorState extends NavigatorState {
     RestorableRouteBuilder<T> routeBuilder, {
     Object? arguments,
   }) {
-    return _navigator.restorablePush<T>(
-      routeBuilder,
-      arguments: arguments,
-    );
+    return _navigator.restorablePush<T>(routeBuilder, arguments: arguments);
   }
 
   @override
@@ -262,10 +250,7 @@ class _MockNavigatorState extends NavigatorState {
     String routeName, {
     Object? arguments,
   }) {
-    return _navigator.restorablePushNamed<T>(
-      routeName,
-      arguments: arguments,
-    );
+    return _navigator.restorablePushNamed<T>(routeName, arguments: arguments);
   }
 
   @override

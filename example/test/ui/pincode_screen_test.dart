@@ -63,22 +63,21 @@ void main() {
       },
     );
 
-    testWidgets(
-      'clamps to 6 digits when exact 6 digits have been entered',
-      (tester) async {
-        await tester.pumpTest(
-          builder: (context) {
-            return MockNavigatorProvider(
-              navigator: navigator,
-              child: const PincodeScreen(),
-            );
-          },
-        );
+    testWidgets('clamps to 6 digits when exact 6 digits have been entered', (
+      tester,
+    ) async {
+      await tester.pumpTest(
+        builder: (context) {
+          return MockNavigatorProvider(
+            navigator: navigator,
+            child: const PincodeScreen(),
+          );
+        },
+      );
 
-        await tester.enterText(find.byType(TextField), '123456');
-        verify(() => navigator.pop('123456')).called(1);
-      },
-    );
+      await tester.enterText(find.byType(TextField), '123456');
+      verify(() => navigator.pop('123456')).called(1);
+    });
 
     testWidgets(
       'clamps to 6 digits when more than 6 digits have been entered',
@@ -97,23 +96,22 @@ void main() {
       },
     );
 
-    testWidgets(
-      'shows error when less than 6 digits have been entered',
-      (tester) async {
-        await tester.pumpTest(
-          builder: (context) {
-            return MockNavigatorProvider(
-              navigator: navigator,
-              child: const PincodeScreen(),
-            );
-          },
-        );
+    testWidgets('shows error when less than 6 digits have been entered', (
+      tester,
+    ) async {
+      await tester.pumpTest(
+        builder: (context) {
+          return MockNavigatorProvider(
+            navigator: navigator,
+            child: const PincodeScreen(),
+          );
+        },
+      );
 
-        await tester.enterText(find.byType(TextField), '12345');
-        await tester.testTextInput.receiveAction(TextInputAction.done);
-        await tester.pump();
-        expect(find.text('Pincode must be 6 digits long'), findsOneWidget);
-      },
-    );
+      await tester.enterText(find.byType(TextField), '12345');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pump();
+      expect(find.text('Pincode must be 6 digits long'), findsOneWidget);
+    });
   });
 }

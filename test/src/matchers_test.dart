@@ -45,8 +45,7 @@ void main() {
       }
 
       group('constructor', () {
-        test(
-            'throws AssertionError when both whereSettings '
+        test('throws AssertionError when both whereSettings '
             'and whereName or whereArguments matchers are provided', () {
           expect(
             () => isRoute(
@@ -134,8 +133,7 @@ void main() {
           );
         });
 
-        test(
-            'does not match anything that is not a route '
+        test('does not match anything that is not a route '
             'with matching settings', () {
           expectToFail(
             createRoute<dynamic>(name: '/test'),
@@ -220,13 +218,15 @@ is a route where the route's `name` is different.
             expectToFail(
               createRoute<dynamic>(arguments: {'a': 1}),
               isRoute(whereArguments: equals({'a': 2})),
-              withMessage: "is a route where the route's `arguments` "
+              withMessage:
+                  "is a route where the route's `arguments` "
                   "at location ['a'] is <1> instead of <2>",
             );
             expectToFail(
               createRoute<dynamic>(arguments: {'a': 1}),
               isRoute(whereArguments: equals({'b': 1})),
-              withMessage: "is a route where the route's `arguments` "
+              withMessage:
+                  "is a route where the route's `arguments` "
                   "is missing map key 'b'",
             );
             expectToFail(
@@ -243,19 +243,20 @@ is a route where the route's `name` is different.
           expect(createRoute<dynamic>(), isRoute(whereMaintainState: isTrue));
         });
 
-        test(
-            'does not match anything that is not a route with matching '
+        test('does not match anything that is not a route with matching '
             'maintainState argument', () {
           expectToFail(
             createRoute<dynamic>(),
             isRoute(whereMaintainState: isFalse),
-            withMessage: 'is a route where `maintainState` '
+            withMessage:
+                'is a route where `maintainState` '
                 'is true instead of false',
           );
           expectToFail(
             NonModalRoute(),
             isRoute(whereMaintainState: isTrue),
-            withMessage: 'is a route where `maintainState` '
+            withMessage:
+                'is a route where `maintainState` '
                 'is not a property on `NonModalRoute` and can only be used '
                 'with `ModalRoute`s',
           );
@@ -275,19 +276,20 @@ is a route where the route's `name` is different.
           );
         });
 
-        test(
-            'does not match anything that is not a route with matching '
+        test('does not match anything that is not a route with matching '
             'fullscreenDialog argument', () {
           expectToFail(
             createRoute<dynamic>(fullscreenDialog: true),
             isRoute(whereFullscreenDialog: isFalse),
-            withMessage: 'is a route where `fullscreenDialog` '
+            withMessage:
+                'is a route where `fullscreenDialog` '
                 'is true instead of false',
           );
           expectToFail(
             NonModalRoute(),
             isRoute(whereFullscreenDialog: isFalse),
-            withMessage: 'is a route where `fullscreenDialog` '
+            withMessage:
+                'is a route where `fullscreenDialog` '
                 'is not a property on `NonModalRoute` and can only be used '
                 'with `PageRoute`s',
           );

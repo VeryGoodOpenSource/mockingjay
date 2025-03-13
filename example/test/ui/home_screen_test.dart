@@ -10,10 +10,12 @@ class FakeRoute<T> extends Fake implements Route<T> {}
 
 void main() {
   group('HomeScreen', () {
-    const showPincodeScreenTextButtonKey =
-        Key('homeScreen_showPincodeScreen_textButton');
-    const showQuizDialogTextButtonKey =
-        Key('homeScreen_showQuizDialog_textButton');
+    const showPincodeScreenTextButtonKey = Key(
+      'homeScreen_showPincodeScreen_textButton',
+    );
+    const showQuizDialogTextButtonKey = Key(
+      'homeScreen_showQuizDialog_textButton',
+    );
 
     late MockNavigator navigator;
 
@@ -39,10 +41,7 @@ void main() {
           },
         );
 
-        expect(
-          find.byKey(showPincodeScreenTextButtonKey),
-          findsOneWidget,
-        );
+        expect(find.byKey(showPincodeScreenTextButtonKey), findsOneWidget);
       });
 
       testWidgets('navigates to PincodeScreen when pressed', (tester) async {
@@ -55,9 +54,7 @@ void main() {
           },
         );
 
-        await tester.tap(
-          find.byKey(showPincodeScreenTextButtonKey),
-        );
+        await tester.tap(find.byKey(showPincodeScreenTextButtonKey));
 
         verify(
           () => navigator.push<String?>(
@@ -91,37 +88,32 @@ void main() {
         );
       });
 
-      testWidgets(
-        'displays snackbar when no pincode was submitted',
-        (tester) async {
-          when(
-            () => navigator.push<String?>(
-              any(
-                that: isRoute<String?>(
-                  whereName: equals('/pincode_screen'),
-                ),
-              ),
-            ),
-          ).thenAnswer((_) async => null);
+      testWidgets('displays snackbar when no pincode was submitted', (
+        tester,
+      ) async {
+        when(
+          () => navigator.push<String?>(
+            any(that: isRoute<String?>(whereName: equals('/pincode_screen'))),
+          ),
+        ).thenAnswer((_) async => null);
 
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const HomeScreen(),
-              );
-            },
-          );
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const HomeScreen(),
+            );
+          },
+        );
 
-          await tester.tap(find.byKey(showPincodeScreenTextButtonKey));
-          await tester.pumpAndSettle();
+        await tester.tap(find.byKey(showPincodeScreenTextButtonKey));
+        await tester.pumpAndSettle();
 
-          expect(
-            find.widgetWithText(SnackBar, 'No pincode submitted. 😲'),
-            findsOneWidget,
-          );
-        },
-      );
+        expect(
+          find.widgetWithText(SnackBar, 'No pincode submitted. 😲'),
+          findsOneWidget,
+        );
+      });
     });
 
     group('show quiz dialog button', () {
@@ -132,10 +124,7 @@ void main() {
           },
         );
 
-        expect(
-          find.byKey(showQuizDialogTextButtonKey),
-          findsOneWidget,
-        );
+        expect(find.byKey(showQuizDialogTextButtonKey), findsOneWidget);
       });
 
       testWidgets('shows quiz dialog when pressed', (tester) async {
@@ -155,83 +144,78 @@ void main() {
         ).called(1);
       });
 
-      testWidgets(
-        'displays snackbar when pizza was selected',
-        (tester) async {
-          when(
-            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
-          ).thenAnswer((_) async => QuizOption.pizza);
+      testWidgets('displays snackbar when pizza was selected', (tester) async {
+        when(
+          () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+        ).thenAnswer((_) async => QuizOption.pizza);
 
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const HomeScreen(),
-              );
-            },
-          );
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const HomeScreen(),
+            );
+          },
+        );
 
-          await tester.tap(find.byKey(showQuizDialogTextButtonKey));
-          await tester.pumpAndSettle();
+        await tester.tap(find.byKey(showQuizDialogTextButtonKey));
+        await tester.pumpAndSettle();
 
-          expect(
-            find.widgetWithText(SnackBar, 'Pizza all the way! 🍕'),
-            findsOneWidget,
-          );
-        },
-      );
+        expect(
+          find.widgetWithText(SnackBar, 'Pizza all the way! 🍕'),
+          findsOneWidget,
+        );
+      });
 
-      testWidgets(
-        'displays snackbar when hamburger was selected',
-        (tester) async {
-          when(
-            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
-          ).thenAnswer((_) async => QuizOption.hamburger);
+      testWidgets('displays snackbar when hamburger was selected', (
+        tester,
+      ) async {
+        when(
+          () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+        ).thenAnswer((_) async => QuizOption.hamburger);
 
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const HomeScreen(),
-              );
-            },
-          );
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const HomeScreen(),
+            );
+          },
+        );
 
-          await tester.tap(find.byKey(showQuizDialogTextButtonKey));
-          await tester.pumpAndSettle();
+        await tester.tap(find.byKey(showQuizDialogTextButtonKey));
+        await tester.pumpAndSettle();
 
-          expect(
-            find.widgetWithText(SnackBar, 'Hamburger all the way! 🍔'),
-            findsOneWidget,
-          );
-        },
-      );
+        expect(
+          find.widgetWithText(SnackBar, 'Hamburger all the way! 🍔'),
+          findsOneWidget,
+        );
+      });
 
-      testWidgets(
-        'displays snackbar when no answer was selected',
-        (tester) async {
-          when(
-            () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
-          ).thenAnswer((_) async => null);
+      testWidgets('displays snackbar when no answer was selected', (
+        tester,
+      ) async {
+        when(
+          () => navigator.push<QuizOption>(any(that: isRoute<QuizOption>())),
+        ).thenAnswer((_) async => null);
 
-          await tester.pumpTest(
-            builder: (context) {
-              return MockNavigatorProvider(
-                navigator: navigator,
-                child: const HomeScreen(),
-              );
-            },
-          );
+        await tester.pumpTest(
+          builder: (context) {
+            return MockNavigatorProvider(
+              navigator: navigator,
+              child: const HomeScreen(),
+            );
+          },
+        );
 
-          await tester.tap(find.byKey(showQuizDialogTextButtonKey));
-          await tester.pumpAndSettle();
+        await tester.tap(find.byKey(showQuizDialogTextButtonKey));
+        await tester.pumpAndSettle();
 
-          expect(
-            find.widgetWithText(SnackBar, 'No answer selected. 😲'),
-            findsOneWidget,
-          );
-        },
-      );
+        expect(
+          find.widgetWithText(SnackBar, 'No answer selected. 😲'),
+          findsOneWidget,
+        );
+      });
     });
   });
 }
