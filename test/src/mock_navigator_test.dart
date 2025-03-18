@@ -504,10 +504,12 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder: (context) => TextButton(
-          onPressed: () => Navigator.of(context).removeRouteBelow(testRoute),
-          child: const Text('Trigger'),
-        ),
+        builder:
+            (context) => TextButton(
+              onPressed:
+                  () => Navigator.of(context).removeRouteBelow(testRoute),
+              child: const Text('Trigger'),
+            ),
       );
 
       await tester.tap(find.byType(TextButton));
