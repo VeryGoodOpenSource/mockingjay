@@ -1,4 +1,15 @@
-# 0.6.0 
+# 1.0.0
+
+**Note**: This release supports [Flutter 3.29.0](https://docs.flutter.dev/release/release-notes/release-notes-3.29.0). Contains a breaking change, where the `isRoute` `named` parameter has reached the the full deprecation cycle.
+
+- chore(deps): bump very_good_analysis from 6.0.0 to 7.0.0 in /example ([#82](https://github.com/VeryGoodOpenSource/mockingjay/pull/82))
+- chore!: remove deprecated parameter ([#86](https://github.com/VeryGoodOpenSource/mockingjay/pull/86))
+- chore: bumping very good analysis from 6.0.0 to 7.0.0 ([#87](https://github.com/VeryGoodOpenSource/mockingjay/pull/87))
+- feat: support `removeRouteBelow` method ([#90](https://github.com/VeryGoodOpenSource/mockingjay/pull/90))
+- chore: bumping flutter version to 3.29.0 and bumping example dependencies ([#88](https://github.com/VeryGoodOpenSource/mockingjay/pull/88))
+- fix: fixing formatting step ([#92](https://github.com/VeryGoodOpenSource/mockingjay/pull/92))
+
+# 0.6.0
 
 - chore: sync min Dart SDK with min Flutter SDK ([#70](https://github.com/VeryGoodOpenSource/mockingjay/pull/70))
 - chore: tighten dependencies ([#74](https://github.com/VeryGoodOpenSource/mockingjay/pull/74))
