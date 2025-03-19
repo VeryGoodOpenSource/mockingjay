@@ -1,6 +1,6 @@
 # 1.0.0
 
-**Note**: This release supports [Flutter 3.29.0](https://docs.flutter.dev/release/release-notes/release-notes-3.29.0). Contains a breaking change, where the `isRoute` `named` parameter has reached the the full deprecation cycle.
+**Note**: This release supports [Flutter 3.29.0](https://docs.flutter.dev/release/release-notes/release-notes-3.29.0). Contains a breaking change, where the `isRoute` `named` parameter has reached the full deprecation cycle.
 
 - chore(deps): bump very_good_analysis from 6.0.0 to 7.0.0 in /example ([#82](https://github.com/VeryGoodOpenSource/mockingjay/pull/82))
 - chore!: remove deprecated parameter ([#86](https://github.com/VeryGoodOpenSource/mockingjay/pull/86))
