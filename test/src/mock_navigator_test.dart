@@ -500,7 +500,9 @@ void main() {
     });
 
     testWidgets('mocks .removeRouteBelow calls', (tester) async {
-      when(() => navigator.removeRouteBelow(any())).thenAnswer((_) {});
+      when(
+        () => navigator.removeRouteBelow<Object?>(any(), any()),
+      ).thenAnswer((_) {});
 
       await tester.pumpTest(
         navigator: navigator,
