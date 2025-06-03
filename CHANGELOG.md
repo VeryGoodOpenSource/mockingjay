@@ -1,8 +1,9 @@
-# 2.0.0
+# 2.0.0 
 
 **Note**: This release supports [Flutter 3.32.0](https://docs.flutter.dev/release/release-notes/release-notes-3.32.0), for migration details see the [release notes](https://github.com/VeryGoodOpenSource/mockingjay/releases/tag/v2.0.0).
 
-- chore!: upgrade to Flutter 3.32.0 ([#98](https://github.com/VeryGoodOpenSource/mockingjay/pull/98))
+- chore!: upgrade to flutter 3.32.0 ([#98](https://github.com/VeryGoodOpenSource/mockingjay/pull/98))
+- fix: update constraint in pubspec.yaml ([#101](https://github.com/VeryGoodOpenSource/mockingjay/pull/101))
 
 # 1.0.0
 
