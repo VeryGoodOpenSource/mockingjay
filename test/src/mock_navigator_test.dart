@@ -463,8 +463,28 @@ void main() {
       ).called(1);
     });
 
+    testWidgets('mocks .removeRoute calls', (tester) async {
+      when(
+        () => navigator.removeRoute<Object?>(any(), any()),
+      ).thenAnswer((_) {});
+
+      await tester.pumpTest(
+        navigator: navigator,
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).removeRoute(testRoute),
+          child: const Text('Trigger'),
+        ),
+      );
+
+      await tester.tap(find.byType(TextButton));
+
+      verify(() => navigator.removeRoute(testRoute)).called(1);
+    });
+
     testWidgets('mocks .removeRouteBelow calls', (tester) async {
-      when(() => navigator.removeRouteBelow(any())).thenAnswer((_) {});
+      when(
+        () => navigator.removeRouteBelow<Object?>(any(), any()),
+      ).thenAnswer((_) {});
 
       await tester.pumpTest(
         navigator: navigator,
