@@ -319,7 +319,12 @@ class _MockNavigatorState extends NavigatorState {
   }
 
   @override
-  void removeRouteBelow(Route<dynamic> anchorRoute) {
-    return _navigator.removeRouteBelow(anchorRoute);
+  void removeRoute<T extends Object?>(Route<T> route, [T? result]) {
+    return _navigator.removeRoute(route, result);
+  }
+
+  @override
+  void removeRouteBelow<T extends Object?>(Route<T> anchorRoute, [T? result]) {
+    return _navigator.removeRouteBelow(anchorRoute, result);
   }
 }

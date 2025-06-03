@@ -20,5 +20,6 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
+      flutter_version: "3.32.0"
       working_directory: example
       runs_on: macos-latest
