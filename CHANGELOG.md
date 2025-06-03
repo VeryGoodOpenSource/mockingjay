@@ -1,3 +1,9 @@
+# 2.0.0
+
+**Note**: This release supports [Flutter 3.32.0](https://docs.flutter.dev/release/release-notes/release-notes-3.32.0), for migration details see the [release notes](https://github.com/VeryGoodOpenSource/mockingjay/releases/tag/v2.0.0).
+
+- chore!: upgrade to Flutter 3.32.0 ([#98](https://github.com/VeryGoodOpenSource/mockingjay/pull/98))
+
 # 1.0.0
 
 **Note**: This release supports [Flutter 3.29.0](https://docs.flutter.dev/release/release-notes/release-notes-3.29.0). Contains a breaking change, where the `isRoute` `named` parameter has reached the full deprecation cycle.
