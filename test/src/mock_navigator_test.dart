@@ -53,11 +53,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).push(testRoute),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).push(testRoute),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -69,11 +68,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).pushNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).pushNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -87,14 +85,12 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).pushNamedAndRemoveUntil(testRouteName, testRoutePredicate),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(
+            context,
+          ).pushNamedAndRemoveUntil(testRouteName, testRoutePredicate),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -113,11 +109,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).pushReplacement(testRoute),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).pushReplacement(testRoute),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -131,13 +126,11 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () =>
-                      Navigator.of(context).pushReplacementNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () =>
+              Navigator.of(context).pushReplacementNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -149,11 +142,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).pop(testRoute),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).pop(testRoute),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -167,12 +159,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).popAndPushNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).popAndPushNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -184,12 +174,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).popUntil(testRoutePredicate),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).popUntil(testRoutePredicate),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -201,11 +189,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).canPop(),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).canPop(),
+          child: const Text('Trigger'),
+        ),
       );
 
       // Called by NavigatorState.didChangeDependencies initially
@@ -219,11 +206,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).maybePop(),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -237,11 +223,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed: () => Navigator.of(context).maybePop(true),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).maybePop(true),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -255,14 +240,12 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).pushAndRemoveUntil(testRoute, testRoutePredicate),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(
+            context,
+          ).pushAndRemoveUntil(testRoute, testRoutePredicate),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -278,14 +261,11 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).restorablePopAndPushNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () =>
+              Navigator.of(context).restorablePopAndPushNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -301,14 +281,11 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).restorablePush(restorableTestRouteBuilder),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () =>
+              Navigator.of(context).restorablePush(restorableTestRouteBuilder),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -324,15 +301,13 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).restorablePushAndRemoveUntil(
-                    restorableTestRouteBuilder,
-                    testRoutePredicate,
-                  ),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).restorablePushAndRemoveUntil(
+            restorableTestRouteBuilder,
+            testRoutePredicate,
+          ),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -351,13 +326,11 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () =>
-                      Navigator.of(context).restorablePushNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () =>
+              Navigator.of(context).restorablePushNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -373,15 +346,14 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).restorablePushNamedAndRemoveUntil(
-                    testRouteName,
-                    testRoutePredicate,
-                  ),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () =>
+              Navigator.of(context).restorablePushNamedAndRemoveUntil(
+                testRouteName,
+                testRoutePredicate,
+              ),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -400,14 +372,12 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).restorablePushReplacement(restorableTestRouteBuilder),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(
+            context,
+          ).restorablePushReplacement(restorableTestRouteBuilder),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -423,14 +393,12 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(
-                    context,
-                  ).restorablePushReplacementNamed(testRouteName),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(
+            context,
+          ).restorablePushReplacementNamed(testRouteName),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -449,15 +417,13 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).restorableReplace(
-                    oldRoute: testRoute,
-                    newRouteBuilder: restorableTestRouteBuilder,
-                  ),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).restorableReplace(
+            oldRoute: testRoute,
+            newRouteBuilder: restorableTestRouteBuilder,
+          ),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -479,15 +445,13 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).restorableReplaceRouteBelow(
-                    anchorRoute: testRoute,
-                    newRouteBuilder: restorableTestRouteBuilder,
-                  ),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).restorableReplaceRouteBelow(
+            anchorRoute: testRoute,
+            newRouteBuilder: restorableTestRouteBuilder,
+          ),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));
@@ -504,12 +468,10 @@ void main() {
 
       await tester.pumpTest(
         navigator: navigator,
-        builder:
-            (context) => TextButton(
-              onPressed:
-                  () => Navigator.of(context).removeRouteBelow(testRoute),
-              child: const Text('Trigger'),
-            ),
+        builder: (context) => TextButton(
+          onPressed: () => Navigator.of(context).removeRouteBelow(testRoute),
+          child: const Text('Trigger'),
+        ),
       );
 
       await tester.tap(find.byType(TextButton));

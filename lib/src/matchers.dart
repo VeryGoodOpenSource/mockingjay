@@ -284,27 +284,25 @@ class _RouteMatcher<T> extends Matcher {
         mismatchDescriptions.add("the route's `arguments` $mismatch");
       }
       if (!maintainStateMatches) {
-        final mismatch =
-            item is! ModalRoute
-                ? 'is not a property on `${item.runtimeType}` and can only be '
-                    'used with `ModalRoute`s'
-                : whereMaintainState!.describeMismatchAsString(
-                  item.maintainState,
-                  matchState,
-                  verbose: verbose,
-                );
+        final mismatch = item is! ModalRoute
+            ? 'is not a property on `${item.runtimeType}` and can only be '
+                  'used with `ModalRoute`s'
+            : whereMaintainState!.describeMismatchAsString(
+                item.maintainState,
+                matchState,
+                verbose: verbose,
+              );
         mismatchDescriptions.add('`maintainState` $mismatch');
       }
       if (!fullscreenDialogMatches) {
-        final mismatch =
-            item is! PageRoute
-                ? 'is not a property on `${item.runtimeType}` and can only be '
-                    'used with `PageRoute`s'
-                : whereFullscreenDialog!.describeMismatchAsString(
-                  item.fullscreenDialog,
-                  matchState,
-                  verbose: verbose,
-                );
+        final mismatch = item is! PageRoute
+            ? 'is not a property on `${item.runtimeType}` and can only be '
+                  'used with `PageRoute`s'
+            : whereFullscreenDialog!.describeMismatchAsString(
+                item.fullscreenDialog,
+                matchState,
+                verbose: verbose,
+              );
         mismatchDescriptions.add('`fullscreenDialog` $mismatch');
       }
 
