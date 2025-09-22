@@ -17,17 +17,10 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   build:
-    strategy:
-      matrix:
-        flutter-version:
-          # The version of Flutter to use should use the minimum Dart SDK version supported by the package,
-          # refer to https://docs.flutter.dev/development/tools/sdk/releases.
-          - "3.32.0"
-          - "3.x"
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: ${{ matrix.flutter-version }}
+      flutter_version: "3.35.x"
       package_get_excludes: example
 
   spell-check:

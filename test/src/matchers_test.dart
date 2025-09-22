@@ -66,23 +66,23 @@ void main() {
           expect(createRoute<String>(name: '/test'), isRoute());
         });
 
-        test('does not match anything that is not a route', () {
-          expectToFail(
+        test('does not match anything that is not a route', () async {
+          await expectToFail(
             1,
             isRoute(),
             withMessage: 'is not a route but an instance of `int`',
           );
-          expectToFail(
+          await expectToFail(
             'a',
             isRoute(),
             withMessage: 'is not a route but an instance of `String`',
           );
-          expectToFail(
+          await expectToFail(
             null,
             isRoute(),
             withMessage: 'is not a route but an instance of `Null`',
           );
-          expectToFail(
+          await expectToFail(
             const SizedBox(),
             isRoute(),
             withMessage: 'is not a route but an instance of `SizedBox`',
@@ -96,23 +96,26 @@ void main() {
           expect(createRoute<String>(name: '/test'), isRoute<String>());
         });
 
-        test('does not match anything that is not a route of that type', () {
-          expectToFail(
-            createRoute<dynamic>(),
-            isRoute<String>(),
-            withMessage: 'is a route of type `dynamic` instead of `String`',
-          );
-          expectToFail(
-            createRoute<dynamic>(name: '/test'),
-            isRoute<String>(),
-            withMessage: 'is a route of type `dynamic` instead of `String`',
-          );
-          expectToFail(
-            1,
-            isRoute<String>(),
-            withMessage: 'is not a route but an instance of `int`',
-          );
-        });
+        test(
+          'does not match anything that is not a route of that type',
+          () async {
+            await expectToFail(
+              createRoute<dynamic>(),
+              isRoute<String>(),
+              withMessage: 'is a route of type `dynamic` instead of `String`',
+            );
+            await expectToFail(
+              createRoute<dynamic>(name: '/test'),
+              isRoute<String>(),
+              withMessage: 'is a route of type `dynamic` instead of `String`',
+            );
+            await expectToFail(
+              1,
+              isRoute<String>(),
+              withMessage: 'is not a route but an instance of `int`',
+            );
+          },
+        );
       });
 
       group('with whereSettings argument', () {
@@ -134,14 +137,14 @@ void main() {
         });
 
         test('does not match anything that is not a route '
-            'with matching settings', () {
-          expectToFail(
+            'with matching settings', () async {
+          await expectToFail(
             createRoute<dynamic>(name: '/test'),
             isRoute(whereSettings: equalsSettingsOf(createRoute<String>())),
             withMessage:
                 "is a route where `settings` has `name` with value '/test'",
           );
-          expectToFail(
+          await expectToFail(
             createRoute<dynamic>(name: '/other_name'),
             isRoute(
               whereSettings: equalsSettingsOf(
@@ -155,7 +158,7 @@ is a route where `settings` has `name` with value '/other_name' which is differe
                      ^
            Differ at offset 1''',
           );
-          expectToFail(
+          await expectToFail(
             1,
             isRoute(whereSettings: equalsSettingsOf(createRoute<dynamic>())),
             withMessage: 'is not a route but an instance of `int`',
@@ -175,29 +178,32 @@ is a route where `settings` has `name` with value '/other_name' which is differe
           );
         });
 
-        test('does not match anything that is not a route with that name', () {
-          expectToFail(
-            createRoute<dynamic>(),
-            isRoute(whereName: equals('/test')),
-            withMessage:
-                "is a route where the route's `name` is empty instead of '/test'",
-          );
-          expectToFail(
-            createRoute<dynamic>(name: '/other_name'),
-            isRoute(whereName: equals('/test')),
-            withMessage: '''
+        test(
+          'does not match anything that is not a route with that name',
+          () async {
+            await expectToFail(
+              createRoute<dynamic>(),
+              isRoute(whereName: equals('/test')),
+              withMessage:
+                  "is a route where the route's `name` is empty instead of '/test'",
+            );
+            await expectToFail(
+              createRoute<dynamic>(name: '/other_name'),
+              isRoute(whereName: equals('/test')),
+              withMessage: '''
 is a route where the route's `name` is different.
           Expected: /test
             Actual: /other_name ...
                      ^
            Differ at offset 1''',
-          );
-          expectToFail(
-            1,
-            isRoute(whereName: equals('/test')),
-            withMessage: 'is not a route but an instance of `int`',
-          );
-        });
+            );
+            await expectToFail(
+              1,
+              isRoute(whereName: equals('/test')),
+              withMessage: 'is not a route but an instance of `int`',
+            );
+          },
+        );
       });
 
       group('with whereArguments argument', () {
@@ -214,22 +220,22 @@ is a route where the route's `name` is different.
 
         test(
           'does not match anything that is not a route with same arguments',
-          () {
-            expectToFail(
+          () async {
+            await expectToFail(
               createRoute<dynamic>(arguments: {'a': 1}),
               isRoute(whereArguments: equals({'a': 2})),
               withMessage:
                   "is a route where the route's `arguments` "
                   "at location ['a'] is <1> instead of <2>",
             );
-            expectToFail(
+            await expectToFail(
               createRoute<dynamic>(arguments: {'a': 1}),
               isRoute(whereArguments: equals({'b': 1})),
               withMessage:
                   "is a route where the route's `arguments` "
                   "is missing map key 'b'",
             );
-            expectToFail(
+            await expectToFail(
               1,
               isRoute(whereArguments: equals({'a': 1})),
               withMessage: 'is not a route but an instance of `int`',
@@ -244,15 +250,15 @@ is a route where the route's `name` is different.
         });
 
         test('does not match anything that is not a route with matching '
-            'maintainState argument', () {
-          expectToFail(
+            'maintainState argument', () async {
+          await expectToFail(
             createRoute<dynamic>(),
             isRoute(whereMaintainState: isFalse),
             withMessage:
                 'is a route where `maintainState` '
                 'is true instead of false',
           );
-          expectToFail(
+          await expectToFail(
             NonModalRoute(),
             isRoute(whereMaintainState: isTrue),
             withMessage:
@@ -260,7 +266,7 @@ is a route where the route's `name` is different.
                 'is not a property on `NonModalRoute` and can only be used '
                 'with `ModalRoute`s',
           );
-          expectToFail(
+          await expectToFail(
             1,
             isRoute(whereMaintainState: isTrue),
             withMessage: 'is not a route but an instance of `int`',
@@ -276,33 +282,36 @@ is a route where the route's `name` is different.
           );
         });
 
-        test('does not match anything that is not a route with matching '
-            'fullscreenDialog argument', () {
-          expectToFail(
-            createRoute<dynamic>(fullscreenDialog: true),
-            isRoute(whereFullscreenDialog: isFalse),
-            withMessage:
-                'is a route where `fullscreenDialog` '
-                'is true instead of false',
-          );
-          expectToFail(
-            NonModalRoute(),
-            isRoute(whereFullscreenDialog: isFalse),
-            withMessage:
-                'is a route where `fullscreenDialog` '
-                'is not a property on `NonModalRoute` and can only be used '
-                'with `PageRoute`s',
-          );
-          expectToFail(
-            1,
-            isRoute(whereFullscreenDialog: isTrue),
-            withMessage: 'is not a route but an instance of `int`',
-          );
-        });
+        test(
+          'does not match anything that is not a route with matching '
+          'fullscreenDialog argument',
+          () async {
+            await expectToFail(
+              createRoute<dynamic>(fullscreenDialog: true),
+              isRoute(whereFullscreenDialog: isFalse),
+              withMessage:
+                  'is a route where `fullscreenDialog` '
+                  'is true instead of false',
+            );
+            await expectToFail(
+              NonModalRoute(),
+              isRoute(whereFullscreenDialog: isFalse),
+              withMessage:
+                  'is a route where `fullscreenDialog` '
+                  'is not a property on `NonModalRoute` and can only be used '
+                  'with `PageRoute`s',
+            );
+            await expectToFail(
+              1,
+              isRoute(whereFullscreenDialog: isTrue),
+              withMessage: 'is not a route but an instance of `int`',
+            );
+          },
+        );
       });
 
-      test('returns all relevant mismatches in one log', () {
-        expectToFail(
+      test('returns all relevant mismatches in one log', () async {
+        await expectToFail(
           createRoute<dynamic>(
             name: '/other_name',
             arguments: {'b': 1},
