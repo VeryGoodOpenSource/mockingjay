@@ -20,7 +20,7 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: "3.35.x"
+      flutter_version: 3.38.x
       package_get_excludes: example
 
   spell-check:
