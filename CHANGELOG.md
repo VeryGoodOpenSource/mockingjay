@@ -1,4 +1,6 @@
-# 2.1.0 \n\n - fix: update constraint in pubspec.yaml ([#101](https://github.com/VeryGoodOpenSource/mockingjay/pull/101))
+# 2.1.0
+
+- fix: update constraint in pubspec.yaml ([#101](https://github.com/VeryGoodOpenSource/mockingjay/pull/101))
 - chore: v2.0.0 ([#102](https://github.com/VeryGoodOpenSource/mockingjay/pull/102))
 - chore(deps): bump very_good_analysis from 8.0.0 to 9.0.0 in /example ([#104](https://github.com/VeryGoodOpenSource/mockingjay/pull/104))
 - chore(deps): bump very_good_analysis from 8.0.0 to 9.0.0 ([#103](https://github.com/VeryGoodOpenSource/mockingjay/pull/103))
