@@ -1,3 +1,14 @@
+# 2.1.0
+
+- fix: update constraint in pubspec.yaml ([#101](https://github.com/VeryGoodOpenSource/mockingjay/pull/101))
+- chore: v2.0.0 ([#102](https://github.com/VeryGoodOpenSource/mockingjay/pull/102))
+- chore(deps): bump very_good_analysis from 8.0.0 to 9.0.0 in /example ([#104](https://github.com/VeryGoodOpenSource/mockingjay/pull/104))
+- chore(deps): bump very_good_analysis from 8.0.0 to 9.0.0 ([#103](https://github.com/VeryGoodOpenSource/mockingjay/pull/103))
+- chore(deps): bump actions/checkout from 4 to 5 ([#105](https://github.com/VeryGoodOpenSource/mockingjay/pull/105))
+- chore(deps): bump very_good_analysis from 9.0.0 to 10.0.0 ([#107](https://github.com/VeryGoodOpenSource/mockingjay/pull/107))
+- chore(deps): bump actions/checkout from 5 to 6 ([#108](https://github.com/VeryGoodOpenSource/mockingjay/pull/108))
+- chore: upgrade dependencies to Dart 3.10.0, Flutter 3.38.1, test 1.26.3 ([#110](https://github.com/VeryGoodOpenSource/mockingjay/pull/110))
+
 # 2.0.0 
 
 **Note**: This release supports [Flutter 3.32.0](https://docs.flutter.dev/release/release-notes/release-notes-3.32.0), for migration details see the [release notes](https://github.com/VeryGoodOpenSource/mockingjay/releases/tag/v2.0.0).
