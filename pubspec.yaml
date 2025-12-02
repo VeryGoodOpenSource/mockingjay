@@ -5,7 +5,7 @@ homepage: https://github.com/VeryGoodOpenSource/mockingjay
 
 environment:
   sdk: ^3.10.0
-  flutter: ^3.38.1
+  flutter: ">=3.38.1"
 
 dependencies:
   flutter:
