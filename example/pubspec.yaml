@@ -4,8 +4,8 @@ version: 0.0.1
 homepage: https://github.com/VeryGoodOpenSource/mockingjay
 
 environment:
-  sdk: ^3.9.0
-  flutter: ^3.35.0
+  sdk: ^3.10.0
+  flutter: ^3.38.1
 
 dependencies:
   bloc: ^9.0.0
