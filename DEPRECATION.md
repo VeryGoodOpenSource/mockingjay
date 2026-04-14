@@ -17,7 +17,7 @@ community. Rather than let it languish with infrequent updates, we are making th
 so users can plan accordingly.
 
 The package will remain available on [pub.dev](https://pub.dev/packages/mockingjay) and the source
-code will stay public and forkable. If there is enough community interest, anyone is welcome to create
+code will stay public and available to fork. If there is enough community interest, anyone is welcome to create
 and maintain a community edition.
 
 ---
@@ -66,15 +66,6 @@ the imperative API and you rely on Mockingjay, you have two options:
   existing license.
 - **Use `NavigatorObserver` and manual test doubles** as a lightweight alternative, which requires
   no third-party package.
-
----
-
-## Timeline
-
-| Date | Milestone |
-|------|-----------|
-| April 2026 | Package marked as deprecated on pub.dev |
-| Ongoing | No new features or maintenance; critical bug reports may be considered on a best-effort basis |
 
 ---
 
