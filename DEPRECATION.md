@@ -35,8 +35,7 @@ Navigator 2.0 is the recommended long-term path.
    See the [go_router documentation](https://pub.dev/packages/go_router) to get started.
 
 2. **Update your tests.** With `go_router`, navigation is driven by a `GoRouter` instance.
-   In tests, you can provide a custom router with a test-specific configuration rather than
-   mocking `Navigator` directly:
+   In tests, you can provide a mock router with a test-specific configuration and inject it as a `Provider` so you can access it through `BuildContext`:
 
    ```dart
    final router = GoRouter(
