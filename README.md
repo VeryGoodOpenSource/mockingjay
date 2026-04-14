@@ -13,6 +13,14 @@ Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
 
 ---
 
+> ⚠️ **This package is deprecated and no longer actively maintained.**
+>
+> The Flutter ecosystem has shifted toward Navigator 2.0 and declarative routing solutions such as [`go_router`][go_router_link]. Mockingjay, which targets Navigator 1.0 APIs, no longer aligns with the direction of the ecosystem.
+>
+> The repository remains public and available to fork. For full migration guidance, see [DEPRECATION.md](DEPRECATION.md).
+
+---
+
 A package that makes it easy to mock, test and verify navigation calls in Flutter. It works in tandem with [`mocktail`][mocktail], allowing you to mock a navigator the same way you would any other object, making it easier to test navigation behavior independently from the UI it's supposed to render.
 
 ## Usage
@@ -112,6 +120,7 @@ void main() {
 [license_link]: https://opensource.org/licenses/MIT
 [logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
 [logo_white]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_white.png#gh-dark-mode-only
+[go_router_link]: https://pub.dev/packages/go_router
 [mocktail]: https://pub.dev/packages/mocktail
 [pub_badge]: https://img.shields.io/pub/v/mockingjay.svg
 [pub_link]: https://pub.dartlang.org/packages/mockingjay
